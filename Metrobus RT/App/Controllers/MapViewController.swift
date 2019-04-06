@@ -12,14 +12,14 @@ import MapKit
 class MapViewController: UIViewController {
     
     private var mapView = AppleMapView().withoutAutoConstraints()
-    private var busPanelView = BusPanelView().withoutAutoConstraints()
+    private var busPanelView = BusPanelView().withoutAutoConstraints().with {
+        $0.isHidden = true
+    }
     
     private let locationCoordinates: Coordinates
     private let linesProvider: LinesProvider
     
     private var busesCardViewController: BusesCardViewController!
-
-    //var coordinatorDelegate: LocationForecastDetailsDelegate?
     
     private var stations = [Station]()
     
@@ -57,7 +57,6 @@ class MapViewController: UIViewController {
     private func configureViewController() {
         navigationItem.title = "Metrobus en Tiempo Real"
         mapView.centerMapOn(location: locationCoordinates, animated: true)
-        //mapView.addPinToMap(at: locationCoordinates, title: locationCoordinates.name, isUnique: true, isSelected: true)
         mapView.centerCameraOn(location: locationCoordinates, animated: true)
     }
     
@@ -122,6 +121,10 @@ extension MapViewController: MKMapViewDelegate {
         return annotationView
     }*/
     
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        busPanelView.isHidden = true
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         guard let coordinate = view.annotation?.coordinate else {
@@ -135,6 +138,7 @@ extension MapViewController: MKMapViewDelegate {
                 self.busesCardViewController.updateWith(busList: buses)
                 let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
                 self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
+                self.busPanelView.isHidden = false
             }) {
                 print("Error")
             }
