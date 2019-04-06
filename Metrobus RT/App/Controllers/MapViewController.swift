@@ -55,9 +55,25 @@ class MapViewController: UIViewController {
     }
     
     private func configureViewController() {
-        navigationItem.title = "Metrobus en Tiempo Real"
+        configureNavigationBar()
         mapView.centerMapOn(location: locationCoordinates, animated: true)
         mapView.centerCameraOn(location: locationCoordinates, animated: true)
+    }
+    
+    private func configureNavigationBar() {
+        let nav = navigationController?.navigationBar
+        nav?.isTranslucent = false
+        nav?.setBackgroundImage(UIImage(named: "nav-bar-bg"), for: .default)
+        nav?.shadowImage = UIImage(named: "shadow-bar-bg")
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        let image = UIImage(named: "nav-bar-logo")
+        imageView.image = image
+        
+        navigationItem.titleView = imageView
     }
     
     private func fetchLines() {

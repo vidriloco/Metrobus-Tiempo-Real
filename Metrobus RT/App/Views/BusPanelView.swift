@@ -120,7 +120,6 @@ class BusPanelView: UIView {
         subtitleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         otherLabel.setContentHuggingPriority(.required, for: .vertical)
         otherLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-
     }
     
     func configureHeader(with headerViewModel: BusPanelHeaderViewModel? = nil, withView view: UICollectionView) {
@@ -149,7 +148,7 @@ class BusPanelView: UIView {
         layer.cornerRadius = 10
         layer.masksToBounds = true
         layer.shadowRadius = 2
-        layer.borderColor = UIColor.red.cgColor.copy(alpha: 0.2)
+        layer.borderColor = UIColor.metrobus.cgColor.copy(alpha: 0.2)
         layer.borderWidth = 5
         imageView.alpha = 0.1
         

@@ -14,7 +14,7 @@ extension UIColor {
         return UIColor(red: 72/255, green: 213/255, blue: 181/255, alpha: 1)
     }
     
-    static var peach: UIColor {
-        return UIColor(red: 255/255, green: 160/255, blue: 122/255, alpha: 1)
+    static var metrobus: UIColor {
+        return UIColor(red: 165/255, green: 29/255, blue: 27/255, alpha: 1)
     }
 }
