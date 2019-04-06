@@ -12,19 +12,24 @@ import MapKit
 class MapViewController: UIViewController {
     
     private var mapView = AppleMapView().withoutAutoConstraints()
-    //private var forecastDetailsView = ForecastDetailsView().withoutAutoConstraints()
+    private var busPanelView = BusPanelView().withoutAutoConstraints()
     
-    private let locationCoordinates: Location
+    private let locationCoordinates: Coordinates
     private let linesProvider: LinesProvider
     
+    private var busesCardViewController: BusesCardViewController!
+
     //var coordinatorDelegate: LocationForecastDetailsDelegate?
     
     private var stations = [Station]()
     
-    init(location: Location, linesProvider: LinesProvider) {
+    init(location: Coordinates, linesProvider: LinesProvider) {
         self.locationCoordinates = location
         self.linesProvider = linesProvider
+
         super.init(nibName: nil, bundle: nil)
+        
+        self.busesCardViewController = self.makeBusesCardViewController()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,13 +42,15 @@ class MapViewController: UIViewController {
         
         mapView.configure(on: view)
         mapView.delegate = self
-        //mapView.addSubview(forecastDetailsView)
+        
+        addChild(busesCardViewController)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //forecastDetailsView.setupViewsAndConstraintsAgainst(parent: mapView)
+        mapView.addSubview(busPanelView)
+        busPanelView.setupViewsAndConstraintsAgainst(parent: mapView)
         fetchLines()
     }
     
@@ -70,42 +77,21 @@ class MapViewController: UIViewController {
                 print("Error")
             }
         }
-        /*let forecastAspectsViewController = makeForecastAspectsViewController()
-        addChild(forecastAspectsViewController)
-        
-        forecastDetailsView.configureForecastAspects(withView: forecastAspectsViewController.collectionView)
-        
-        locationForecastProvider.weatherAt(coordinates: locationCoordinates, completion: { location in
-            forecastAspectsViewController.prepareWithForecastLocation(location: location)
-            
-            let headerViewModel = ForecastDetailsView.ForecastHeaderViewModel(with: location.generalStatus)
-            
-            self.forecastDetailsView.configureForecastAspects(with: headerViewModel, withView: forecastAspectsViewController.collectionView)
-        }) {
-            let alert = UIAlertController(title: "Oops :/", message: "It was not possible to fetch the weather information for this locality", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Return to list of localities", style: .default, handler: { _ in
-                self.coordinatorDelegate?.dismissToLocationsListViewController()
-            }))
-            
-            self.present(alert, animated: true)
-        }*/
     }
     
-    /*private func makeForecastAspectsViewController() -> WeatherCollectionViewController {
-        let forecastAspectsViewController = WeatherCollectionViewController()
+    private func makeBusesCardViewController() -> BusesCardViewController {
+        let busesCardViewController = BusesCardViewController()
         
-        let oldFrame = forecastAspectsViewController.collectionView.frame
+        let oldFrame = busesCardViewController.collectionView.frame
         
-        let extraWidth = forecastDetailsView.extraWidthDueConstraints
-        forecastDetailsView.layoutIfNeeded()
+        let extraWidth = busPanelView.extraWidthDueConstraints
+        busPanelView.layoutIfNeeded()
         
-        let newSize = CGSize(width: forecastDetailsView.frame.width-extraWidth, height: oldFrame.size.height)
-        forecastAspectsViewController.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        forecastAspectsViewController.collectionView.frame = CGRect(origin: oldFrame.origin, size: newSize)
-        return forecastAspectsViewController
-    }*/
-    
+        let newSize = CGSize(width: busPanelView.frame.width-extraWidth, height: oldFrame.size.height)
+        busesCardViewController.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        busesCardViewController.collectionView.frame = CGRect(origin: oldFrame.origin, size: newSize)
+        return busesCardViewController
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -126,7 +112,7 @@ extension MapViewController: MKMapViewDelegate {
             
             if let station = stations.first(where: { $0.equals(to: annotation.coordinate)  }) {
                 
-                annotationView?.image = UIImage(named: station.namedIcon)
+                //annotationView?.image = UIImage(named: station.namedIcon)
             }
             
         } else {
@@ -135,6 +121,25 @@ extension MapViewController: MKMapViewDelegate {
         
         return annotationView
     }*/
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        guard let coordinate = view.annotation?.coordinate else {
+            return
+        }
+
+        if let station = stations.first(where: { $0.equals(to: coordinate) }) {
+            linesProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
+                guard let self = self else { return }
+                
+                self.busesCardViewController.updateWith(busList: buses)
+                let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
+                self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
+            }) {
+                print("Error")
+            }
+        }
+    }
     
 }
 

@@ -20,7 +20,7 @@ class MapViewCoordinator: Coordinator {
     }
     
     func start() {
-        let homeLocation = Location("Mexico City", latitude: 19.432795, longitude: -99.1353397)
+        let homeLocation = Location(latitude: 19.432795, longitude: -99.1353397)
         let mapViewController = MapViewController(location: homeLocation, linesProvider: linesProvider)
         presenter.pushViewController(mapViewController, animated: true)
     }

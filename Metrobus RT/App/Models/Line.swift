@@ -15,7 +15,8 @@ struct Line {
     
     init(withLineFromAPI line: LineFromAPI) {
         self.color = line.color
-        self.name = line.name
-        self.stations = line.stations.map { Station(withStationFromAPI: $0) }
+        let capitalizedLineName = line.name.capitalized
+        self.name = capitalizedLineName
+        self.stations = line.stations.map { Station(withStationFromAPI: $0, forLine: capitalizedLineName) }
     }
 }

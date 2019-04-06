@@ -8,28 +8,27 @@
 
 import Foundation
 
-struct Station: Coordinates {
+class Station: Location {
     
     var id = String()
     var name = String()
     var icon = String()
-
-    var latitude: Double
-    var longitude: Double
+    var lineName = String()
     
     var namedIcon: String  {
         return String(icon.split(separator: "/").last?.split(separator: ".").first ?? "")
     }
     
-    init(withStationFromAPI station: StationFromAPI) {
-        self.init(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
+    init(withStationFromAPI station: StationFromAPI, forLine lineNamed: String) {
+        super.init(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
         self.id = station.id
-        self.name = station.name
+        self.name = station.name.capitalized
         self.icon = station.icon
+        self.lineName = lineNamed
     }
     
-    init(latitude: Double, longitude: Double) {
-        self.latitude = latitude
-        self.longitude = longitude
+    required init(latitude: Double, longitude: Double) {
+        super.init(latitude: latitude, longitude: longitude)
     }
+    
 }

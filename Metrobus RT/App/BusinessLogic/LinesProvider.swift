@@ -20,7 +20,6 @@ enum APIResourceProviderError: Error {
 class LinesProvider: APIResourceProvider {
     
     private let providerURL = "api-dev.cdmx.gob.mx"
-    private let apiClient = APIJSONClient<JSON.LinesResponse>()
     private let decoder = JSONDecoder()
     
     var delegate: APIResourceProviderDelegate?
@@ -28,6 +27,7 @@ class LinesProvider: APIResourceProvider {
     func allLines(completion: @escaping ([Line]) -> Void, failure: @escaping () -> Void) {
         let endPoint = APIEndpoint(host: providerURL, path: "/index.php/Metrobus/Lineas")
         
+        let apiClient = APIJSONClient<JSON.Lines>()
         apiClient.execute(at: endPoint) { response in
             switch response {
             case .success(let linesResponse):
@@ -48,14 +48,35 @@ class LinesProvider: APIResourceProvider {
         // TODO: For when there is a consistent way to retrieve an icon
         //let endPoint = APIEndpoint(host: providerURL, path: "/index.php/Metrobus/Lineas")
     //}
+    
+    func nextArrivals(to stationId: String, completion: @escaping([Bus]) -> Void, failure: @escaping () -> Void) {
+        let endPoint = APIEndpoint(host: providerURL, path: "/index.php/Metrobus/Estaciones").with(params: ["id": stationId, "num_metrobuses": "8"])
+        
+        let apiClient = APIJSONClient<JSON.Buses>()
+        apiClient.execute(at: endPoint) { response in
+            switch response {
+            case .success(let stations):
+                
+                let buses = stations.response.metrobuses.map { Bus(withMetrobusFromAPI: $0) }
+                DispatchQueue.main.async {
+                    completion(buses)
+                }
+            case .fail:
+                DispatchQueue.main.async {
+                    failure()
+                }
+            }
+        }
+    }
 }
 
 // MARK - API Response structure
-typealias LineFromAPI = JSON.LinesResponse.Line
-typealias StationFromAPI = JSON.LinesResponse.Line.Station
+typealias LineFromAPI = JSON.Lines.Line
+typealias StationFromAPI = JSON.Lines.Line.Station
+typealias BusFromAPI = JSON.Buses.Metrobus
 
 struct JSON {
-    struct LinesResponse: Decodable {
+    struct Lines: Decodable {
         
         let response: [Line]
         
@@ -80,5 +101,33 @@ struct JSON {
                 }
             }
         }
+    }
+    
+    struct Buses: Decodable {
+        
+        let response: Response
+        
+        struct Response: Decodable {
+            let icon: String
+            let metrobuses: [Metrobus]
+            
+            private enum CodingKeys : String, CodingKey {
+                case icon = "icono", metrobuses
+            }
+        }
+        
+        struct Metrobus: Decodable {
+            let latitude: Double
+            let longitude: Double
+            let distance: Double
+            let arrivingIn: String
+            let destination: String
+            let busNumber: String
+            
+            private enum CodingKeys : String, CodingKey {
+                case latitude = "latitud", longitude = "longitud", arrivingIn = "tiempo_llegar", destination = "destino", busNumber = "label", distance = "distancia"
+            }
+        }
+        
     }
 }
