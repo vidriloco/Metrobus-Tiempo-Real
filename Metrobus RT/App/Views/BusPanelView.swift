@@ -131,8 +131,6 @@ class BusPanelView: UIView {
             titleLabel.text = viewModel.title
             subtitleLabel.text = viewModel.subtitle
             otherLabel.text = viewModel.humanizedArrivals
-        } else {
-            titleLabel.text = "Cargando info  ..."
         }
         
         NSLayoutConstraint.activate([
