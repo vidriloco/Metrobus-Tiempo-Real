@@ -77,7 +77,6 @@ class MapViewController: UIViewController {
     }
     
     private func fetchLines() {
-        
         if stations.isEmpty {
             linesProvider.allLines(completion: { lines in
                 lines.forEach({ line in
@@ -89,9 +88,19 @@ class MapViewController: UIViewController {
                     }
                 })
             }) {
-                print("Error")
+                self.displayFailedFetchingLinesErrorAlert()
             }
         }
+    }
+    
+    private func displayFailedFetchingLinesErrorAlert() {
+        let alert = UIAlertController(title: "Ujule", message: "No pudimos descargar el mapa de las líneas. Revisa tu conexión a internet.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Intentar de nuevo", style: .default, handler: { action in
+            self.fetchLines()
+        }))
+        
+        self.present(alert, animated: true)
     }
     
     private func makeBusesCardViewController() -> BusesCardViewController {
