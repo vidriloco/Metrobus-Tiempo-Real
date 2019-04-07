@@ -52,7 +52,7 @@ class MapViewController: UIViewController {
         
         mapView.addSubview(busPanelView)
         busPanelView.setupViewsAndConstraintsAgainst(parent: mapView)
-        fetchLines()
+        fetchLinesData()
     }
     
     private func configureViewController() {
@@ -77,7 +77,7 @@ class MapViewController: UIViewController {
         navigationItem.titleView = imageView
     }
     
-    private func fetchLines() {
+    private func fetchLinesData() {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Cargando Líneas"
         hud.show(in: self.view)
@@ -93,7 +93,10 @@ class MapViewController: UIViewController {
                     }
                 })
                 hud.dismiss()
-            }) {
+            }) { [weak self] in
+                
+                guard let self = self else { return }
+                
                 hud.dismiss(animated: false)
                 self.displayFailedFetchingLinesErrorAlert()
             }
@@ -104,8 +107,39 @@ class MapViewController: UIViewController {
         let alert = UIAlertController(title: "Ujule", message: "No pudimos descargar el mapa de las líneas. Revisa tu conexión a internet.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Intentar de nuevo", style: .default, handler: { action in
-            self.fetchLines()
+            self.fetchLinesData()
         }))
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func fetchStationData(at coordinate: CLLocationCoordinate2D) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        
+        if let station = stations.first(where: { $0.equals(to: coordinate) }) {
+            linesProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
+                guard let self = self else { return }
+                
+                self.busesCardViewController.updateWith(busList: buses)
+                let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
+                self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
+                self.busPanelView.isHidden = false
+                hud.dismiss()
+            }) { [weak self] in
+                
+                guard let self = self else { return }
+                
+                hud.dismiss(animated: false)
+                self.displayFailedFetchingStationErrorAlert()
+            }
+        }
+    }
+    
+    private func displayFailedFetchingStationErrorAlert() {
+        let alert = UIAlertController(title: "Ujule", message: "No pudimos cargar la info de esta estación", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
         
         self.present(alert, animated: true)
     }
@@ -163,23 +197,7 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
 
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        
-        if let station = stations.first(where: { $0.equals(to: coordinate) }) {
-            linesProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
-                guard let self = self else { return }
-                
-                self.busesCardViewController.updateWith(busList: buses)
-                let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
-                self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
-                self.busPanelView.isHidden = false
-                hud.dismiss()
-            }) {
-                hud.dismiss(animated: false)
-                print("Error")
-            }
-        }
+        fetchStationData(at: coordinate)
     }
     
 }
