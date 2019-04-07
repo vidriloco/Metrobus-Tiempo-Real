@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import JGProgressHUD
 
 class MapViewController: UIViewController {
     
@@ -77,6 +78,10 @@ class MapViewController: UIViewController {
     }
     
     private func fetchLines() {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Cargando Líneas"
+        hud.show(in: self.view)
+        
         if stations.isEmpty {
             linesProvider.allLines(completion: { lines in
                 lines.forEach({ line in
@@ -87,7 +92,9 @@ class MapViewController: UIViewController {
                         self.stations.append(station)
                     }
                 })
+                hud.dismiss()
             }) {
+                hud.dismiss(animated: false)
                 self.displayFailedFetchingLinesErrorAlert()
             }
         }
@@ -156,6 +163,9 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
 
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: self.view)
+        
         if let station = stations.first(where: { $0.equals(to: coordinate) }) {
             linesProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
                 guard let self = self else { return }
@@ -164,7 +174,9 @@ extension MapViewController: MKMapViewDelegate {
                 let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
                 self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
                 self.busPanelView.isHidden = false
+                hud.dismiss()
             }) {
+                hud.dismiss(animated: false)
                 print("Error")
             }
         }

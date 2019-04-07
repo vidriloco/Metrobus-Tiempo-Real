@@ -40,6 +40,7 @@
 		3AAA7F94225677C600F216CC /* BusCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F93225677C600F216CC /* BusCardViewCell.swift */; };
 		3AAA7F96225677FE00F216CC /* BusCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */; };
 		3AAA7F9822568E4B00F216CC /* BusPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F9722568E4B00F216CC /* BusPanelView.swift */; };
+		E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,9 @@
 		3AAA7F93225677C600F216CC /* BusCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCardViewCell.swift; sourceTree = "<group>"; };
 		3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusCardViewCell.xib; sourceTree = "<group>"; };
 		3AAA7F9722568E4B00F216CC /* BusPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusPanelView.swift; sourceTree = "<group>"; };
+		7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.release.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.release.xcconfig"; sourceTree = "<group>"; };
+		7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.debug.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.debug.xcconfig"; sourceTree = "<group>"; };
+		E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metrobus_RT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A60295122548E98006A6DBF /* MapKit.framework in Frameworks */,
+				E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +103,7 @@
 				3A60290A22548024006A6DBF /* Metrobus RT */,
 				3A60290922548024006A6DBF /* Products */,
 				3A60294F22548E98006A6DBF /* Frameworks */,
+				DC38D8B411B7AFE480A69FAA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				3A60295022548E98006A6DBF /* MapKit.framework */,
+				E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -278,6 +285,16 @@
 			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
+		DC38D8B411B7AFE480A69FAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */,
+				7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,9 +302,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A60291A22548026006A6DBF /* Build configuration list for PBXNativeTarget "Metrobus RT" */;
 			buildPhases = (
+				84D5AB32630CD0A889ED8A2C /* [CP] Check Pods Manifest.lock */,
 				3A60290422548024006A6DBF /* Sources */,
 				3A60290522548024006A6DBF /* Frameworks */,
 				3A60290622548024006A6DBF /* Resources */,
+				F55CDCE533E66B6D815FC5DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,6 +368,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84D5AB32630CD0A889ED8A2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Metrobus RT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F55CDCE533E66B6D815FC5DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A60290422548024006A6DBF /* Sources */ = {
@@ -526,6 +592,7 @@
 		};
 		3A60291B22548026006A6DBF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -544,6 +611,7 @@
 		};
 		3A60291C22548026006A6DBF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
