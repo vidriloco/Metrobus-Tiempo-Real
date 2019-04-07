@@ -31,11 +31,12 @@
 		3A60294E22548CB6006A6DBF /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60294D22548CB6006A6DBF /* Bus.swift */; };
 		3A60295122548E98006A6DBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A60295022548E98006A6DBF /* MapKit.framework */; };
 		3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */; };
-		3A60295622549525006A6DBF /* LinesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295522549525006A6DBF /* LinesProvider.swift */; };
+		3A60295622549525006A6DBF /* APIDevProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295522549525006A6DBF /* APIDevProvider.swift */; };
 		3A60295822549D0C006A6DBF /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295722549D0C006A6DBF /* Line.swift */; };
 		3A60295A22549DC7006A6DBF /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295922549DC7006A6DBF /* Station.swift */; };
 		3A60295C225539EC006A6DBF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295B225539EC006A6DBF /* Location.swift */; };
 		3AA7EDCA225916E40017B2C9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDC9225916E40017B2C9 /* String.swift */; };
+		3AA7EDCC225A7C230017B2C9 /* CDMXDatosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDCB225A7C230017B2C9 /* CDMXDatosProvider.swift */; };
 		3AAA7F922256726E00F216CC /* BusesCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F912256726E00F216CC /* BusesCardViewController.swift */; };
 		3AAA7F94225677C600F216CC /* BusCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F93225677C600F216CC /* BusCardViewCell.swift */; };
 		3AAA7F96225677FE00F216CC /* BusCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */; };
@@ -70,11 +71,12 @@
 		3A60294D22548CB6006A6DBF /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		3A60295022548E98006A6DBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
-		3A60295522549525006A6DBF /* LinesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesProvider.swift; sourceTree = "<group>"; };
+		3A60295522549525006A6DBF /* APIDevProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDevProvider.swift; sourceTree = "<group>"; };
 		3A60295722549D0C006A6DBF /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		3A60295922549DC7006A6DBF /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		3A60295B225539EC006A6DBF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3AA7EDC9225916E40017B2C9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		3AA7EDCB225A7C230017B2C9 /* CDMXDatosProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMXDatosProvider.swift; sourceTree = "<group>"; };
 		3AAA7F912256726E00F216CC /* BusesCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusesCardViewController.swift; sourceTree = "<group>"; };
 		3AAA7F93225677C600F216CC /* BusCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCardViewCell.swift; sourceTree = "<group>"; };
 		3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusCardViewCell.xib; sourceTree = "<group>"; };
@@ -280,7 +282,8 @@
 		3A60295422549367006A6DBF /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				3A60295522549525006A6DBF /* LinesProvider.swift */,
+				3A60295522549525006A6DBF /* APIDevProvider.swift */,
+				3AA7EDCB225A7C230017B2C9 /* CDMXDatosProvider.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -291,7 +294,6 @@
 				7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */,
 				7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -442,13 +444,14 @@
 				3AA7EDCA225916E40017B2C9 /* String.swift in Sources */,
 				3A60292C225487AF006A6DBF /* GenericMap.swift in Sources */,
 				3A60293F22548984006A6DBF /* UIColor.swift in Sources */,
-				3A60295622549525006A6DBF /* LinesProvider.swift in Sources */,
+				3A60295622549525006A6DBF /* APIDevProvider.swift in Sources */,
 				3A60295A22549DC7006A6DBF /* Station.swift in Sources */,
 				3A60294E22548CB6006A6DBF /* Bus.swift in Sources */,
 				3A6029212254861B006A6DBF /* RootCoordinator.swift in Sources */,
 				3A60292922548740006A6DBF /* MapViewController.swift in Sources */,
 				3A60294A22548AAE006A6DBF /* API.swift in Sources */,
 				3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */,
+				3AA7EDCC225A7C230017B2C9 /* CDMXDatosProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

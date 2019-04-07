@@ -1,5 +1,5 @@
 //
-//  LinesProvider.swift
+//  APIDevProvider.swift
 //  Metrobus RT
 //
 //  Created by Alejandro on 4/3/19.
@@ -15,9 +15,9 @@ enum APIResourceProviderError: Error {
     case unexpectedError
 }
 
-// MARK - LinesProvider concrete resource provider
+// MARK - APIDevProvider concrete resource provider
 
-class LinesProvider: APIResourceProvider {
+class APIDevProvider: APIResourceProvider {
     
     private let providerURL = "api-dev.cdmx.gob.mx"
     private let decoder = JSONDecoder()

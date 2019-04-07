@@ -18,15 +18,15 @@ class MapViewController: UIViewController {
     }
     
     private let locationCoordinates: Coordinates
-    private let linesProvider: LinesProvider
+    private let linesProvider: APIDevProvider
     
     private var busesCardViewController: BusesCardViewController!
     
     private var stations = [Station]()
     
-    init(location: Coordinates, linesProvider: LinesProvider) {
+    init(location: Coordinates, apiProvider: APIDevProvider) {
         self.locationCoordinates = location
-        self.linesProvider = linesProvider
+        self.linesProvider = apiProvider
 
         super.init(nibName: nil, bundle: nil)
         
