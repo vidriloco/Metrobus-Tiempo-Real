@@ -18,15 +18,15 @@ class MapViewController: UIViewController {
     }
     
     private let locationCoordinates: Coordinates
-    private let linesProvider: APIDevProvider
+    private let apiDevProvider: APIDevProvider
     
     private var busesCardViewController: BusesCardViewController!
     
     private var stations = [Station]()
     
-    init(location: Coordinates, apiProvider: APIDevProvider) {
+    init(location: Coordinates, apiDevProvider: APIDevProvider) {
         self.locationCoordinates = location
-        self.linesProvider = apiProvider
+        self.apiDevProvider = apiDevProvider
 
         super.init(nibName: nil, bundle: nil)
         
@@ -83,7 +83,7 @@ class MapViewController: UIViewController {
         hud.show(in: self.view)
         
         if stations.isEmpty {
-            linesProvider.allLines(completion: { lines in
+            apiDevProvider.allLines(completion: { lines in
                 lines.forEach({ line in
                     line.stations.forEach { [weak self] station in
                         
@@ -118,7 +118,7 @@ class MapViewController: UIViewController {
         hud.show(in: self.view)
         
         if let station = stations.first(where: { $0.equals(to: coordinate) }) {
-            linesProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
+            apiDevProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
                 guard let self = self else { return }
                 
                 self.busesCardViewController.updateWith(busList: buses)

@@ -21,7 +21,7 @@ class MapViewCoordinator: Coordinator {
     
     func start() {
         let homeLocation = Location(latitude: 19.432795, longitude: -99.1353397)
-        let mapViewController = MapViewController(location: homeLocation, apiProvider: linesProvider)
+        let mapViewController = MapViewController(location: homeLocation, apiDevProvider: linesProvider)
         presenter.pushViewController(mapViewController, animated: true)
     }
 }
