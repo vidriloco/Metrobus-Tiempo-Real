@@ -40,7 +40,7 @@ class AppleMapView: MKMapView, GenericMap {
         
         self.addGestureRecognizer(tapGestureRecognizer)
         self.addGestureRecognizer(doubletapGestureRecognizer)
-        
+        self.showsUserLocation = true
     }
     
     @objc func mapTapped(_ sender: UITapGestureRecognizer) {
@@ -90,6 +90,10 @@ class AppleMapView: MKMapView, GenericMap {
         let polyline = MKPolyline(coordinates: coordinates.map({ CLLocationCoordinate2DMake(CLLocationDegrees($0.latitude), CLLocationDegrees($0.longitude)) }), count: coordinates.count)
         polyline.title = title
         self.addOverlay(polyline)
+    }
+    
+    func centerMapOnUserLocation() {
+        self.setCenter(userLocation.coordinate, animated: true)
     }
 }
 

@@ -78,6 +78,13 @@ class MapViewController: UIViewController {
         imageView.image = image
         
         navigationItem.titleView = imageView
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "locate-me"), style: .plain, target: self, action: #selector(centerMapOnUserLocation))
+        nav?.tintColor = .white
+    }
+    
+    @objc private func centerMapOnUserLocation() {
+        mapView.centerMapOnUserLocation()
     }
     
     private func fetchLinesData() {

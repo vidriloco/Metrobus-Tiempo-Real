@@ -14,6 +14,7 @@ protocol GenericMap {
     func configure(on parentView: UIView)
     func centerCameraOn(location coordinates: Coordinates, animated: Bool)
     func centerMapOn(location coordinates: Coordinates, animated: Bool)
+    func centerMapOnUserLocation()
     func addPinToMap(at coordinates: Coordinates, title: String?, isUnique: Bool, isSelected: Bool)
     func addRouteToMap(with coordinates: [Coordinates], title: String)
     func clearPin()
