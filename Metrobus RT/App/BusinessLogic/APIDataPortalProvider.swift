@@ -10,23 +10,20 @@ import Foundation
 
 class APIDataPortalProvider: APIResourceProvider {
     
-    private let providerURL = "https://datos.cdmx.gob.mx"
+    private let providerURL = "datos.cdmx.gob.mx"
     private let decoder = JSONDecoder()
-    
-    var delegate: APIResourceProviderDelegate?
-    
-    func allLinesPaths(completion: @escaping ([Line]) -> Void) {
-        let endPoint = APIEndpoint(host: providerURL, path: "/api/records/1.0/search/?dataset=lineas-metrobus&facet=line&facet=nombre")
         
-        let apiClient = APIJSONClient<JSON.Results.LineGeometry>()
+    func allLinesPaths(completion: @escaping ([LinePath]) -> Void) {
+        let endPoint = APIEndpoint(scheme: "https", host: providerURL, path: "/api/records/1.0/search").with(params: ["dataset": "lineas-metrobus", "facet": "line"])
+
+        let apiClient = APIJSONClient<JSON.Results>()
         apiClient.execute(at: endPoint) { response in
             switch response {
             case .success(let linesResponse):
-                print(linesResponse)
-                /*let lines = linesResponse.response.map { Line(withLineFromAPI: $0) }
+                let lines = linesResponse.records.map({ LinePath.init(withLineGeometryFromAPI: $0) })
                 DispatchQueue.main.async {
                     completion(lines)
-                }*/
+                }
             case .fail:
                 print("Error")
             }
@@ -43,11 +40,11 @@ extension JSON {
         let records: [LineGeometry]
         
         struct LineGeometry: Decodable {
-            let fields: [Field]
+            let fields: Fields
             
-            struct Field: Decodable {
-                let line: Int
+            struct Fields: Decodable {
                 let geometry: Geometry
+                let line: Int
                 
                 struct Geometry: Decodable {
                     let coordinates: [[Double]]

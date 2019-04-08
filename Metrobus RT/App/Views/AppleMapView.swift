@@ -85,6 +85,12 @@ class AppleMapView: MKMapView, GenericMap {
     func clearPin() {
         removeAnnotations(annotations)
     }
+    
+    func addRouteToMap(with coordinates: [Coordinates], title: String) {
+        let polyline = MKPolyline(coordinates: coordinates.map({ CLLocationCoordinate2DMake(CLLocationDegrees($0.latitude), CLLocationDegrees($0.longitude)) }), count: coordinates.count)
+        polyline.title = title
+        self.addOverlay(polyline)
+    }
 }
 
 extension CLLocationCoordinate2D {

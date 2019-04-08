@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5CEC37225BBE7B00DC5814 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5CEC36225BBE7B00DC5814 /* LineView.swift */; };
 		3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60290B22548024006A6DBF /* AppDelegate.swift */; };
 		3A60290E22548024006A6DBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60290D22548024006A6DBF /* ViewController.swift */; };
 		3A60291122548024006A6DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60290F22548024006A6DBF /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		3A60295C225539EC006A6DBF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295B225539EC006A6DBF /* Location.swift */; };
 		3AA7EDCA225916E40017B2C9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDC9225916E40017B2C9 /* String.swift */; };
 		3AA7EDCC225A7C230017B2C9 /* APIDataPortalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDCB225A7C230017B2C9 /* APIDataPortalProvider.swift */; };
+		3AA7EDCE225B17640017B2C9 /* LinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDCD225B17640017B2C9 /* LinePath.swift */; };
 		3AAA7F922256726E00F216CC /* BusesCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F912256726E00F216CC /* BusesCardViewController.swift */; };
 		3AAA7F94225677C600F216CC /* BusCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F93225677C600F216CC /* BusCardViewCell.swift */; };
 		3AAA7F96225677FE00F216CC /* BusCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */; };
@@ -45,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A5CEC36225BBE7B00DC5814 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		3A60290822548024006A6DBF /* Metrobus RT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metrobus RT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A60290B22548024006A6DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A60290D22548024006A6DBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		3A60295B225539EC006A6DBF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3AA7EDC9225916E40017B2C9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3AA7EDCB225A7C230017B2C9 /* APIDataPortalProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataPortalProvider.swift; sourceTree = "<group>"; };
+		3AA7EDCD225B17640017B2C9 /* LinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePath.swift; sourceTree = "<group>"; };
 		3AAA7F912256726E00F216CC /* BusesCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusesCardViewController.swift; sourceTree = "<group>"; };
 		3AAA7F93225677C600F216CC /* BusCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCardViewCell.swift; sourceTree = "<group>"; };
 		3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusCardViewCell.xib; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				3A60295722549D0C006A6DBF /* Line.swift */,
 				3A60295922549DC7006A6DBF /* Station.swift */,
 				3A60295B225539EC006A6DBF /* Location.swift */,
+				3AA7EDCD225B17640017B2C9 /* LinePath.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				3AAA7F93225677C600F216CC /* BusCardViewCell.swift */,
 				3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */,
 				3AAA7F9722568E4B00F216CC /* BusPanelView.swift */,
+				3A5CEC36225BBE7B00DC5814 /* LineView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -436,9 +442,11 @@
 				3AAA7F922256726E00F216CC /* BusesCardViewController.swift in Sources */,
 				3A60295822549D0C006A6DBF /* Line.swift in Sources */,
 				3A60295C225539EC006A6DBF /* Location.swift in Sources */,
+				3A5CEC37225BBE7B00DC5814 /* LineView.swift in Sources */,
 				3A60290E22548024006A6DBF /* ViewController.swift in Sources */,
 				3AAA7F94225677C600F216CC /* BusCardViewCell.swift in Sources */,
 				3A60294522548A12006A6DBF /* APIEndpoint.swift in Sources */,
+				3AA7EDCE225B17640017B2C9 /* LinePath.swift in Sources */,
 				3A60292F225487EE006A6DBF /* Coordinates.swift in Sources */,
 				3A60294C22548ACF006A6DBF /* APIResourceProvider.swift in Sources */,
 				3AA7EDCA225916E40017B2C9 /* String.swift in Sources */,

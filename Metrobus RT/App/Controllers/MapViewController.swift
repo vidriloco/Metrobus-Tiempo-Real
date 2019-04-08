@@ -19,14 +19,16 @@ class MapViewController: UIViewController {
     
     private let locationCoordinates: Coordinates
     private let apiDevProvider: APIDevProvider
+    private let dataProvider: APIDataPortalProvider
     
     private var busesCardViewController: BusesCardViewController!
     
     private var stations = [Station]()
     
-    init(location: Coordinates, apiDevProvider: APIDevProvider) {
+    init(location: Coordinates, apiDevProvider: APIDevProvider, dataProvider: APIDataPortalProvider) {
         self.locationCoordinates = location
         self.apiDevProvider = apiDevProvider
+        self.dataProvider = dataProvider
 
         super.init(nibName: nil, bundle: nil)
         
@@ -53,6 +55,7 @@ class MapViewController: UIViewController {
         mapView.addSubview(busPanelView)
         busPanelView.setupViewsAndConstraintsAgainst(parent: mapView)
         fetchLinesData()
+        fetchLinesGeometryData()
     }
     
     private func configureViewController() {
@@ -144,6 +147,23 @@ class MapViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    private func fetchLinesGeometryData() {
+        dataProvider.allLinesPaths { lines in
+            
+            lines.forEach({ line in
+                var locations = [Coordinates]()
+                
+                line.coordinates.forEach({ coordinates in
+                    if let latitude = coordinates.last, let longitude = coordinates.first {
+                        locations.append(Location(latitude: latitude, longitude: longitude))
+                    }
+                })
+                
+                self.mapView.addRouteToMap(with: locations, title: "\(line.number)")
+            })
+        }
+    }
+    
     private func makeBusesCardViewController() -> BusesCardViewController {
         let busesCardViewController = BusesCardViewController()
         
@@ -198,6 +218,17 @@ extension MapViewController: MKMapViewDelegate {
         }
 
         fetchStationData(at: coordinate)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let testlineRenderer = MKPolylineRenderer(polyline: polyline)
+            
+            testlineRenderer.strokeColor = LineView.colorForLine(with: polyline.title)
+            testlineRenderer.lineWidth = 2.0
+            return testlineRenderer
+        }
+        return MKOverlayRenderer()
     }
     
 }

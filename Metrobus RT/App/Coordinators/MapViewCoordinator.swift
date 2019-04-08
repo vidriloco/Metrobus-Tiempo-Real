@@ -12,16 +12,18 @@ class MapViewCoordinator: Coordinator {
     private let presenter: UINavigationController
     
     private var mapViewController: MapViewController?
-    private var linesProvider: APIDevProvider
+    private var devProvider: APIDevProvider
+    private var dataProvider: APIDataPortalProvider
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
-        self.linesProvider = APIDevProvider()
+        self.devProvider = APIDevProvider()
+        self.dataProvider = APIDataPortalProvider()
     }
     
     func start() {
         let homeLocation = Location(latitude: 19.432795, longitude: -99.1353397)
-        let mapViewController = MapViewController(location: homeLocation, apiDevProvider: linesProvider)
+        let mapViewController = MapViewController(location: homeLocation, apiDevProvider: devProvider, dataProvider: dataProvider)
         presenter.pushViewController(mapViewController, animated: true)
     }
 }
