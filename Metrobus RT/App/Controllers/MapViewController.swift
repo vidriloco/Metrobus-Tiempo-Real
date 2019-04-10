@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import JGProgressHUD
+import CoreLocation
 
 class MapViewController: UIViewController {
     
@@ -19,16 +20,18 @@ class MapViewController: UIViewController {
     
     private let locationCoordinates: Coordinates
     private let apiDevProvider: APIDevProvider
-    private let dataProvider: APIDataPortalProvider
+    private let linesGeometryDataSource: LinesGeometryDataSource
     
     private var busesCardViewController: BusesCardViewController!
     
     private var stations = [Station]()
     
-    init(location: Coordinates, apiDevProvider: APIDevProvider, dataProvider: APIDataPortalProvider) {
+    private var locationManager: CLLocationManager!
+    
+    init(location: Coordinates, apiDevProvider: APIDevProvider, linesGeometryDataSource: LinesGeometryDataSource) {
         self.locationCoordinates = location
         self.apiDevProvider = apiDevProvider
-        self.dataProvider = dataProvider
+        self.linesGeometryDataSource = linesGeometryDataSource
 
         super.init(nibName: nil, bundle: nil)
         
@@ -79,12 +82,8 @@ class MapViewController: UIViewController {
         
         navigationItem.titleView = imageView
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "locate-me"), style: .plain, target: self, action: #selector(centerMapOnUserLocation))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "locate-me"), style: .plain, target: self, action: #selector(determineMyCurrentLocation))
         nav?.tintColor = .white
-    }
-    
-    @objc private func centerMapOnUserLocation() {
-        mapView.centerMapOnUserLocation()
     }
     
     private func fetchLinesData() {
@@ -131,10 +130,15 @@ class MapViewController: UIViewController {
             apiDevProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
                 guard let self = self else { return }
                 
-                self.busesCardViewController.updateWith(busList: buses)
-                let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
-                self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
-                self.busPanelView.isHidden = false
+                if buses.isEmpty {
+                    self.displayEmptyBusesAlert()
+                } else {
+                    self.busesCardViewController.updateWith(busList: buses)
+                    let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
+                    self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
+                    self.busPanelView.isHidden = false
+                }
+                
                 hud.dismiss()
             }) { [weak self] in
                 
@@ -154,19 +158,32 @@ class MapViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    private func displayEmptyBusesAlert() {
+        let alert = UIAlertController(title: "Aviso", message: "No hay autobuses llegando a esta estación en este momento", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
     private func fetchLinesGeometryData() {
-        dataProvider.allLinesPaths { lines in
+        linesGeometryDataSource.allLinesPaths { lines in
             
             lines.forEach({ line in
-                var locations = [Coordinates]()
                 
-                line.coordinates.forEach({ coordinates in
-                    if let latitude = coordinates.last, let longitude = coordinates.first {
-                        locations.append(Location(latitude: latitude, longitude: longitude))
-                    }
+                line.paths.forEach({ paths in
+                    var locations = [Coordinates]()
+
+                    paths.forEach({ coordinates in
+                        if let latitude = coordinates.first, let longitude = coordinates.last {
+                            locations.append(Location(latitude: latitude, longitude: longitude))
+                        }
+                        self.mapView.addRouteToMap(with: locations, title: "\(line.number)")
+
+                    })
+                    
                 })
                 
-                self.mapView.addRouteToMap(with: locations, title: "\(line.number)")
             })
         }
     }
@@ -224,6 +241,8 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
 
+        // TODO: Improve centering on poi
+        //self.mapView.centerCameraOn(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude), animated: true)
         fetchStationData(at: coordinate)
     }
     
@@ -238,6 +257,34 @@ extension MapViewController: MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    
+    @objc func determineMyCurrentLocation() {
+
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+            //locationManager.startUpdatingHeading()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        mapView.centerMapOnUserLocation()
+        busPanelView.isHidden = true
+        
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        print("Error \(error)")
+    }
 }
 
 extension Station {

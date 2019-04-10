@@ -7,12 +7,11 @@
 //
 
 import MapKit
-
 // MARK - Apple map view wrapper around MKMapView
 
 class AppleMapView: MKMapView, GenericMap {
     
-    private var allowedAltitudeRange = CLLocationDistance(120000)...CLLocationDistance(190000)
+    private var allowedAltitudeRange = CLLocationDistance(9000)...CLLocationDistance(15000)
     
     var mapDelegate: GenericMapDelegate?
     
@@ -26,7 +25,6 @@ class AppleMapView: MKMapView, GenericMap {
                 self.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
                 mapView.isZoomEnabled = true
                 mapView.isPitchEnabled = true
-                mapView.showsUserLocation = true
             })
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapTapped))
@@ -38,9 +36,9 @@ class AppleMapView: MKMapView, GenericMap {
         
         tapGestureRecognizer.require(toFail: doubletapGestureRecognizer)
         
-        self.addGestureRecognizer(tapGestureRecognizer)
-        self.addGestureRecognizer(doubletapGestureRecognizer)
-        self.showsUserLocation = true
+        addGestureRecognizer(tapGestureRecognizer)
+        addGestureRecognizer(doubletapGestureRecognizer)
+        showsUserLocation = true
     }
     
     @objc func mapTapped(_ sender: UITapGestureRecognizer) {
@@ -71,7 +69,7 @@ class AppleMapView: MKMapView, GenericMap {
     func centerCameraOn(location coordinateLocation: Coordinates, animated: Bool) {
         let altitude = (allowedAltitudeRange ~= camera.altitude) ? camera.altitude : allowedAltitudeRange.lowerBound
         
-        let mapCenter = CLLocationCoordinate2DMake(coordinateLocation.latitude-0.11, coordinateLocation.longitude)
+        let mapCenter = CLLocationCoordinate2DMake(coordinateLocation.latitude, coordinateLocation.longitude)
         let mapCamera = MKMapCamera(lookingAtCenter: mapCenter, fromEyeCoordinate: mapCenter, eyeAltitude: altitude)
         setCamera(mapCamera, animated: animated)
     }
@@ -93,7 +91,8 @@ class AppleMapView: MKMapView, GenericMap {
     }
     
     func centerMapOnUserLocation() {
-        self.setCenter(userLocation.coordinate, animated: true)
+        let coordinates = Location(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        self.centerCameraOn(location: coordinates, animated: true)
     }
 }
 

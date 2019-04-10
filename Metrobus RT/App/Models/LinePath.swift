@@ -10,10 +10,5 @@ import Foundation
 
 struct LinePath {
     let number: Int
-    let coordinates: [[Double]]
-    
-    init(withLineGeometryFromAPI lineGeom: LineGeometryFromAPI) {
-        self.number = lineGeom.fields.line
-        self.coordinates = lineGeom.fields.geometry.coordinates
-    }
+    let paths: [[[Double]]]
 }
