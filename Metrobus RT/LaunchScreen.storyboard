@@ -21,11 +21,10 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I17-wb-Hvj">
                                 <rect key="frame" x="177.5" y="540" width="20" height="20"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metrobus-rt" highlightedImage="metrobus-rt" translatesAutoresizingMaskIntoConstraints="NO" id="q1C-Vm-iZc">
-                                <rect key="frame" x="135.5" y="396" width="104" height="110"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metrobus-rt" translatesAutoresizingMaskIntoConstraints="NO" id="q1C-Vm-iZc">
+                                <rect key="frame" x="135.5" y="184" width="104" height="322"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="44h-YP-HGX"/>
-                                    <constraint firstAttribute="width" secondItem="q1C-Vm-iZc" secondAttribute="height" multiplier="52:55" id="ea2-5P-4tz"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -45,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="metrobus-rt" width="160" height="160"/>
+        <image name="metrobus-rt" width="162" height="322"/>
     </resources>
 </document>
