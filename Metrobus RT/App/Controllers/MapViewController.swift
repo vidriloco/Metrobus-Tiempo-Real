@@ -201,6 +201,13 @@ class MapViewController: UIViewController {
         busesCardViewController.collectionView.frame = CGRect(origin: oldFrame.origin, size: newSize)
         return busesCardViewController
     }
+    
+    private func runTriggersAfterMapCenterChanged(to coordinate: CLLocationCoordinate2D) {
+        if coordinate.latitude != 0 && coordinate.longitude != 0 {
+            mapView.centerMapOnUserLocation()
+            busPanelView.isHidden = true
+        }
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -230,6 +237,10 @@ extension MapViewController: MKMapViewDelegate {
         
         return annotationView
     }*/
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        runTriggersAfterMapCenterChanged(to: userLocation.coordinate)
+    }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         busPanelView.isHidden = true
@@ -275,10 +286,11 @@ extension MapViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        mapView.centerMapOnUserLocation()
-        busPanelView.isHidden = true
-        
+        if let coordinate = locations.first?.coordinate {
+            runTriggersAfterMapCenterChanged(to: coordinate)
+        }
         manager.stopUpdatingLocation()
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
