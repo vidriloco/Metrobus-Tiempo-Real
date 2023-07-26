@@ -8,34 +8,51 @@
 
 import UIKit
 import MapKit
-import JGProgressHUD
+import MBProgressHUD
 import CoreLocation
+import Combine
 
 class MapViewController: UIViewController {
-    
-    private var mapView = AppleMapView().withoutAutoConstraints()
-    private var busPanelView = BusPanelView().withoutAutoConstraints().with {
-        $0.isHidden = true
-    }
+    private var cancellables: Set<AnyCancellable> = []
+
+    private lazy var mapView: AppleMapView = {
+        let view = AppleMapView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.configureTapGestureRecognizers()
+        
+        view.isZoomEnabled = true
+        view.isPitchEnabled = true
+        
+        view.centerMapOn(location: locationCoordinates, animated: true)
+        view.centerCameraOn(location: locationCoordinates, animated: true)
+        
+        return view
+    }()
     
     private let locationCoordinates: Coordinates
     private let apiDevProvider: APIDevProvider
     private let linesGeometryDataSource: LinesGeometryDataSource
-    
-    private var busesCardViewController: BusesCardViewController!
-    
+        
     private var stations = [Station]()
     
-    private var locationManager: CLLocationManager!
+    private lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        return locationManager
+    }()
+    
+    private let viewModel: ViewModel
     
     init(location: Coordinates, apiDevProvider: APIDevProvider, linesGeometryDataSource: LinesGeometryDataSource) {
         self.locationCoordinates = location
         self.apiDevProvider = apiDevProvider
         self.linesGeometryDataSource = linesGeometryDataSource
-
-        super.init(nibName: nil, bundle: nil)
+        self.viewModel = ViewModel(with: apiDevProvider)
         
-        self.busesCardViewController = self.makeBusesCardViewController()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,35 +61,28 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
         
-        mapView.configure(on: view)
+        configureNavigationBar()
+        configureMapViewHierachy()
+        bindViewModel()
+                
         mapView.delegate = self
-        
-        addChild(busesCardViewController)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        mapView.addSubview(busPanelView)
-        busPanelView.setupViewsAndConstraintsAgainst(parent: mapView)
         fetchLinesData()
         fetchLinesGeometryData()
     }
     
-    private func configureViewController() {
-        configureNavigationBar()
-        mapView.centerMapOn(location: locationCoordinates, animated: true)
-        mapView.centerCameraOn(location: locationCoordinates, animated: true)
-    }
-    
     private func configureNavigationBar() {
         let nav = navigationController?.navigationBar
+        
         nav?.isTranslucent = false
         nav?.setBackgroundImage(UIImage(named: "nav-bar-bg"), for: .default)
         nav?.shadowImage = UIImage(named: "shadow-bar-bg")
-        
+        nav?.backgroundColor = UIColor.metrobus
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         
         imageView.contentMode = .scaleAspectFit
@@ -86,10 +96,22 @@ class MapViewController: UIViewController {
         nav?.tintColor = .white
     }
     
+    private func configureMapViewHierachy() {
+        
+        view.addSubview(mapView)
+        
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: mapView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
+            view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: mapView.topAnchor),
+            view.bottomAnchor.constraint(equalTo: mapView.bottomAnchor)
+        ])
+        
+    }
+    
     private func fetchLinesData() {
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Cargando Líneas"
-        hud.show(in: self.view)
+        let hud = MBProgressHUD(view: view)
+        hud.show(animated: true)
         
         if stations.isEmpty {
             apiDevProvider.allLines(completion: { lines in
@@ -101,15 +123,55 @@ class MapViewController: UIViewController {
                         self.stations.append(station)
                     }
                 })
-                hud.dismiss()
+                hud.hide(animated: true)
             }) { [weak self] in
                 
                 guard let self = self else { return }
                 
-                hud.dismiss(animated: false)
+                hud.hide(animated: true)
                 self.displayFailedFetchingLinesErrorAlert()
             }
         }
+    }
+    
+    var busPanelView: BusPanelView?
+    
+    func configureBusPanelView() {
+        guard busPanelView == nil else { return }
+        
+        busPanelView = BusPanelView()
+        
+        guard let busPanelView = busPanelView else { return }
+        
+        mapView.addSubview(busPanelView)
+        
+        busPanelView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([view.bottomAnchor.constraint(equalTo: busPanelView.bottomAnchor, constant: 80),
+                                     busPanelView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                                     view.trailingAnchor.constraint(equalTo: busPanelView.trailingAnchor, constant: 20)])
+    }
+    
+    func bindViewModel() {
+        viewModel.$selectedStation.sink { station in
+            guard let station = station else { return }
+            
+            self.configureBusPanelView()
+            
+            self.busPanelView?.configureHeaderWith(stationName: station.name, lineName: station.lineName)
+        }.store(in: &cancellables)
+        
+        viewModel.$availableBuses.sink { buses in
+            if buses.isEmpty { return }
+
+            self.configureBusPanelView()
+            
+            self.busPanelView?.configureWith(buses: buses)
+        }.store(in: &cancellables)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        busPanelView?.setColors()
     }
     
     private func displayFailedFetchingLinesErrorAlert() {
@@ -120,34 +182,6 @@ class MapViewController: UIViewController {
         }))
         
         self.present(alert, animated: true)
-    }
-    
-    private func fetchStationData(at coordinate: CLLocationCoordinate2D) {
-        let hud = JGProgressHUD(style: .dark)
-        hud.show(in: self.view)
-        
-        if let station = stations.first(where: { $0.equals(to: coordinate) }) {
-            apiDevProvider.nextArrivals(to: station.id, completion: { [weak self] buses in
-                guard let self = self else { return }
-                
-                if buses.isEmpty {
-                    self.displayEmptyBusesAlert()
-                } else {
-                    self.busesCardViewController.updateWith(busList: buses)
-                    let viewModel = BusPanelView.BusPanelHeaderViewModel(title: station.name, subtitle: station.lineName, arrivals: buses.count)
-                    self.busPanelView.configureHeader(with: viewModel, withView: self.busesCardViewController.collectionView)
-                    self.busPanelView.isHidden = false
-                }
-                
-                hud.dismiss()
-            }) { [weak self] in
-                
-                guard let self = self else { return }
-                
-                hud.dismiss(animated: false)
-                self.displayFailedFetchingStationErrorAlert()
-            }
-        }
     }
     
     private func displayFailedFetchingStationErrorAlert() {
@@ -187,63 +221,15 @@ class MapViewController: UIViewController {
             })
         }
     }
-    
-    private func makeBusesCardViewController() -> BusesCardViewController {
-        let busesCardViewController = BusesCardViewController()
-        
-        let oldFrame = busesCardViewController.collectionView.frame
-        
-        let extraWidth = busPanelView.extraWidthDueConstraints
-        busPanelView.layoutIfNeeded()
-        
-        let newSize = CGSize(width: busPanelView.frame.width-extraWidth, height: oldFrame.size.height)
-        busesCardViewController.collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        busesCardViewController.collectionView.frame = CGRect(origin: oldFrame.origin, size: newSize)
-        return busesCardViewController
-    }
-    
-    private func runTriggersAfterMapCenterChanged(to coordinate: CLLocationCoordinate2D) {
-        if coordinate.latitude != 0 && coordinate.longitude != 0 {
-            mapView.centerMapOnUserLocation()
-            busPanelView.isHidden = true
-        }
-    }
 }
 
 extension MapViewController: MKMapViewDelegate {
-    // For handling icons
     
-    /*func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "Pin"
-        
-        if annotation is MKUserLocation {
-            return nil
-        }
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-            
-            if let station = stations.first(where: { $0.equals(to: annotation.coordinate)  }) {
-                
-                //annotationView?.image = UIImage(named: station.namedIcon)
-            }
-            
-        } else {
-            annotationView?.annotation = annotation
-        }
-        
-        return annotationView
-    }*/
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        runTriggersAfterMapCenterChanged(to: userLocation.coordinate)
-    }
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) { }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        busPanelView.isHidden = true
+        busPanelView?.removeFromSuperview()
+        busPanelView = nil
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -253,8 +239,10 @@ extension MapViewController: MKMapViewDelegate {
         }
 
         // TODO: Improve centering on poi
-        //self.mapView.centerCameraOn(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude), animated: true)
-        fetchStationData(at: coordinate)
+        self.mapView.centerCameraOn(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude), animated: true)
+        guard let station = stations.first(where: { $0.equals(to: coordinate) }) else { return }
+        
+        viewModel.fetchStationData(at: station)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -271,26 +259,13 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    
     @objc func determineMyCurrentLocation() {
-
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            //locationManager.startUpdatingHeading()
-        }
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let coordinate = locations.first?.coordinate {
-            runTriggersAfterMapCenterChanged(to: coordinate)
-        }
-        manager.stopUpdatingLocation()
-        
+        mapView.centerMapOnUserLocation()
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)

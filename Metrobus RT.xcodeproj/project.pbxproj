@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		3A5CEC39225BDDEB00DC5814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5CEC38225BDDEB00DC5814 /* LaunchScreen.storyboard */; };
 		3A5CEC3B225D3CF000DC5814 /* LinesData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A5CEC3A225D3CF000DC5814 /* LinesData.plist */; };
 		3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60290B22548024006A6DBF /* AppDelegate.swift */; };
-		3A60290E22548024006A6DBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60290D22548024006A6DBF /* ViewController.swift */; };
 		3A60291122548024006A6DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60290F22548024006A6DBF /* Main.storyboard */; };
 		3A60291322548026006A6DBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A60291222548026006A6DBF /* Assets.xcassets */; };
 		3A6029212254861B006A6DBF /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6029202254861B006A6DBF /* RootCoordinator.swift */; };
@@ -42,8 +41,9 @@
 		3AA7EDCE225B17640017B2C9 /* LinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDCD225B17640017B2C9 /* LinePath.swift */; };
 		3AAA7F922256726E00F216CC /* BusesCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F912256726E00F216CC /* BusesCardViewController.swift */; };
 		3AAA7F94225677C600F216CC /* BusCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F93225677C600F216CC /* BusCardViewCell.swift */; };
-		3AAA7F96225677FE00F216CC /* BusCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */; };
 		3AAA7F9822568E4B00F216CC /* BusPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F9722568E4B00F216CC /* BusPanelView.swift */; };
+		DFCC47222A6D99090003E914 /* MapViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC47212A6D99090003E914 /* MapViewController+ViewModel.swift */; };
+		DFCC47242A6DB8290003E914 /* CustomLoaderIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC47232A6DB8290003E914 /* CustomLoaderIndicatorView.swift */; };
 		E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,6 @@
 		3A5CEC3A225D3CF000DC5814 /* LinesData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LinesData.plist; sourceTree = "<group>"; };
 		3A60290822548024006A6DBF /* Metrobus RT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metrobus RT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A60290B22548024006A6DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A60290D22548024006A6DBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A60291022548024006A6DBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A60291222548026006A6DBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A60291722548026006A6DBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,10 +84,11 @@
 		3AA7EDCD225B17640017B2C9 /* LinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePath.swift; sourceTree = "<group>"; };
 		3AAA7F912256726E00F216CC /* BusesCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusesCardViewController.swift; sourceTree = "<group>"; };
 		3AAA7F93225677C600F216CC /* BusCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCardViewCell.swift; sourceTree = "<group>"; };
-		3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusCardViewCell.xib; sourceTree = "<group>"; };
 		3AAA7F9722568E4B00F216CC /* BusPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusPanelView.swift; sourceTree = "<group>"; };
 		7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.release.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.release.xcconfig"; sourceTree = "<group>"; };
 		7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.debug.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.debug.xcconfig"; sourceTree = "<group>"; };
+		DFCC47212A6D99090003E914 /* MapViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+ViewModel.swift"; sourceTree = "<group>"; };
+		DFCC47232A6DB8290003E914 /* CustomLoaderIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoaderIndicatorView.swift; sourceTree = "<group>"; };
 		E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metrobus_RT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,7 +129,6 @@
 				3A60292722548681006A6DBF /* App */,
 				3A60292222548641006A6DBF /* Libraries */,
 				3A60290B22548024006A6DBF /* AppDelegate.swift */,
-				3A60290D22548024006A6DBF /* ViewController.swift */,
 				3A60290F22548024006A6DBF /* Main.storyboard */,
 				3A5CEC38225BDDEB00DC5814 /* LaunchScreen.storyboard */,
 				3A60291222548026006A6DBF /* Assets.xcassets */,
@@ -144,6 +143,7 @@
 			children = (
 				3A60292822548740006A6DBF /* MapViewController.swift */,
 				3AAA7F912256726E00F216CC /* BusesCardViewController.swift */,
+				DFCC47212A6D99090003E914 /* MapViewController+ViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -231,9 +231,9 @@
 			children = (
 				3A602931225488DE006A6DBF /* AppleMapView.swift */,
 				3AAA7F93225677C600F216CC /* BusCardViewCell.swift */,
-				3AAA7F95225677FE00F216CC /* BusCardViewCell.xib */,
 				3AAA7F9722568E4B00F216CC /* BusPanelView.swift */,
 				3A5CEC36225BBE7B00DC5814 /* LineView.swift */,
+				DFCC47232A6DB8290003E914 /* CustomLoaderIndicatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 				3A60290422548024006A6DBF /* Sources */,
 				3A60290522548024006A6DBF /* Frameworks */,
 				3A60290622548024006A6DBF /* Resources */,
-				F55CDCE533E66B6D815FC5DA /* [CP] Embed Pods Frameworks */,
+				45F59E14FACB16005392BEC2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,7 +374,6 @@
 				3A60291322548026006A6DBF /* Assets.xcassets in Resources */,
 				3A5CEC39225BDDEB00DC5814 /* LaunchScreen.storyboard in Resources */,
 				3A60291122548024006A6DBF /* Main.storyboard in Resources */,
-				3AAA7F96225677FE00F216CC /* BusCardViewCell.xib in Resources */,
 				3A5CEC3B225D3CF000DC5814 /* LinesData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +381,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		45F59E14FACB16005392BEC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		84D5AB32630CD0A889ED8A2C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,28 +420,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F55CDCE533E66B6D815FC5DA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -437,6 +431,7 @@
 				3A60293D22548984006A6DBF /* NSObject.swift in Sources */,
 				3A60293C22548984006A6DBF /* Dictionary.swift in Sources */,
 				3A60292622548665006A6DBF /* Coordinator.swift in Sources */,
+				DFCC47242A6DB8290003E914 /* CustomLoaderIndicatorView.swift in Sources */,
 				3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */,
 				3A60293E22548984006A6DBF /* UIView.swift in Sources */,
 				3A60294622548A12006A6DBF /* APIJSONClient.swift in Sources */,
@@ -447,8 +442,8 @@
 				3A60295822549D0C006A6DBF /* Line.swift in Sources */,
 				3A60295C225539EC006A6DBF /* Location.swift in Sources */,
 				3A5CEC37225BBE7B00DC5814 /* LineView.swift in Sources */,
-				3A60290E22548024006A6DBF /* ViewController.swift in Sources */,
 				3AAA7F94225677C600F216CC /* BusCardViewCell.swift in Sources */,
+				DFCC47222A6D99090003E914 /* MapViewController+ViewModel.swift in Sources */,
 				3A60294522548A12006A6DBF /* APIEndpoint.swift in Sources */,
 				3AA7EDCE225B17640017B2C9 /* LinePath.swift in Sources */,
 				3A60292F225487EE006A6DBF /* Coordinates.swift in Sources */,
@@ -605,7 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
 				INFOPLIST_FILE = "Metrobus RT/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -625,7 +620,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
 				INFOPLIST_FILE = "Metrobus RT/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

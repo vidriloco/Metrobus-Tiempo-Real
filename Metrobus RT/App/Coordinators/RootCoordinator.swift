@@ -24,6 +24,7 @@ class RootCoordinator: Coordinator {
     
     func start() {
         window.rootViewController = rootViewController
+        
         mapViewCoordinator.start()
         window.makeKeyAndVisible()
     }

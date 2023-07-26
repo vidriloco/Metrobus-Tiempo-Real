@@ -15,18 +15,7 @@ class AppleMapView: MKMapView, GenericMap {
     
     var mapDelegate: GenericMapDelegate?
     
-    func configure(on parentView: UIView) {
-        self.added(to: parentView)
-            .withoutAutoConstraints()
-            .with({ mapView in
-                parentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-                self.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
-                parentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-                self.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
-                mapView.isZoomEnabled = true
-                mapView.isPitchEnabled = true
-            })
-        
+    func configureTapGestureRecognizers() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(mapTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         

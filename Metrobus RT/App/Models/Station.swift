@@ -22,7 +22,7 @@ class Station: Location {
     init(withStationFromAPI station: StationFromAPI, forLine lineNamed: String) {
         super.init(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
         self.id = station.id
-        self.name = station.name.capitalized
+        self.name = station.name.capitalized.replacingOccurrences(of: "_", with: " ")
         self.icon = station.icon
         self.lineName = lineNamed
     }

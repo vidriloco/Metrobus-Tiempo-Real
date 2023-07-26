@@ -54,17 +54,6 @@ extension BusesCardViewController {
                                  numberOfItemsInSection section: Int) -> Int {
         return busesApproachingList.count
     }
-    
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let dequeuedCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-        if let busCardCell = dequeuedCell as? BusCardViewCell {
-            busCardCell.configureWith(viewModel: busesApproachingList[indexPath.row])
-        }
-        
-        return dequeuedCell
-    }
 }
 
 // MARK - View delegate layout

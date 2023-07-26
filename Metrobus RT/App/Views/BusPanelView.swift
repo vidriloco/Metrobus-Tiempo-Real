@@ -11,55 +11,62 @@ import UIKit
 class BusPanelView: UIView {
     
     struct InnerConstraints {
-        static let leading: CGFloat = 20
-        static let trailing: CGFloat = 20
-        static let top: CGFloat = 20
-        static let bottom: CGFloat = 10
+        static let margin: CGFloat = 20
+        static let loadingIndicatorSize: CGFloat = 30
     }
     
-    struct ParentViewConstraints {
-        static let leading: CGFloat = 20
-        static let trailing: CGFloat = 20
-        static let bottom: CGFloat = 20
-    }
+    private lazy var headerView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [stationNameLabel, lineNameLabel])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.distribution = .fillProportionally
+        view.alignment = .fill
+        view.spacing = 1
+        
+        return view
+    }()
     
-    struct ImageViewConstraints {
-        static let bottom: CGFloat = -25
-        static let leading: CGFloat = 10
-        static let height: CGFloat = 100
-    }
+    private lazy var stackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [headerView, nextBusesView, loadingIndicatorView])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.distribution = .fillProportionally
+        view.alignment = .fill
+        view.spacing = 20
+        
+        return view
+    }()
     
-    var extraWidthDueConstraints : CGFloat {
-        return InnerConstraints.leading + InnerConstraints.trailing
-    }
+    private lazy var nextBusesView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .vertical
+        view.distribution = .fillProportionally
+        view.alignment = .fill
+        view.spacing = 8
+        
+        return view
+    }()
     
-    private let stackView = UIStackView().withoutAutoConstraints().with {
-        $0.axis = .vertical
-        $0.distribution = .fillProportionally
-        $0.alignment = .leading
-        $0.spacing = 0
-    }
+    private lazy var loadingIndicatorView: CustomLoaderIndicatorView = {
+        let view = CustomLoaderIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
     
-    private let titleLabel = UILabel().withoutAutoConstraints().with {
+    private lazy var stationNameLabel = UILabel().withoutAutoConstraints().with {
         $0.font = UIFont.boldSystemFont(ofSize: 24)
         $0.numberOfLines = 0
-        $0.textAlignment = .left
-        $0.textColor = .darkGray
-
+        $0.textAlignment = .center
+        $0.textColor = defaultTextColor
     }
     
-    private let subtitleLabel = UILabel().withoutAutoConstraints().with {
+    private lazy var lineNameLabel = UILabel().withoutAutoConstraints().with {
         $0.font = UIFont.boldSystemFont(ofSize: 17)
         $0.numberOfLines = 0
-        $0.textAlignment = .left
-        $0.textColor = UIColor.darkGray.withAlphaComponent(0.8)
-    }
-    
-    private let otherLabel = UILabel().withoutAutoConstraints().with {
-        $0.font = UIFont.boldSystemFont(ofSize: 10)
-        $0.numberOfLines = 0
-        $0.textAlignment = .left
-        $0.textColor = UIColor.darkGray.withAlphaComponent(0.6)
+        $0.textAlignment = .center
+        $0.textColor = defaultTextColor.withAlphaComponent(0.5)
     }
     
     private let spacingView = UIView().withoutAutoConstraints()
@@ -67,104 +74,89 @@ class BusPanelView: UIView {
     private let imageView = UIImageView().withoutAutoConstraints().with {
         $0.contentMode = .scaleAspectFit
         $0.image = UIImage(named: "metrobus-icon")
-
     }
+    
+    private var nextArrivalsViews: [BusCardViewCell] = []
     
     init() {
         super.init(frame: .zero)
         customizeAppearance()
+        setupViews()
+        loadingIndicatorView.startAnimating()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViewsAndConstraintsAgainst(parent view: UIView) {
-        addSubview(imageView)
+    func setupViews() {
         addSubview(stackView)
         
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(subtitleLabel)
-        stackView.addArrangedSubview(otherLabel)
-
-        stackView.addArrangedSubview(spacingView)
-
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: InnerConstraints.leading),
-            trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: InnerConstraints.trailing),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: InnerConstraints.top),
-            bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: InnerConstraints.bottom)
-            ])
+        nextBusesView.isHidden = true
         
         NSLayoutConstraint.activate([
-            view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: ParentViewConstraints.bottom),
-            self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ParentViewConstraints.leading),
-            view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: ParentViewConstraints.trailing)
-            ])
-        
-        NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ImageViewConstraints.leading),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ImageViewConstraints.bottom),
-            imageView.heightAnchor.constraint(equalToConstant: ImageViewConstraints.height),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
-            ])
-        
-        NSLayoutConstraint.activate([
-            spacingView.heightAnchor.constraint(equalToConstant: 10),
-            spacingView.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor)
-            ])
-        
-        titleLabel.setContentHuggingPriority(.required, for: .vertical)
-        titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        subtitleLabel.setContentHuggingPriority(.required, for: .vertical)
-        subtitleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        otherLabel.setContentHuggingPriority(.required, for: .vertical)
-        otherLabel.setContentCompressionResistancePriority(.required, for: .vertical)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: InnerConstraints.margin),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -InnerConstraints.margin),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: InnerConstraints.margin),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -InnerConstraints.margin),
+            loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingIndicatorView.heightAnchor.constraint(equalToConstant: InnerConstraints.loadingIndicatorSize)
+        ])
     }
     
-    func configureHeader(with headerViewModel: BusPanelHeaderViewModel? = nil, withView view: UICollectionView) {
-        if !stackView.arrangedSubviews.contains(view) {
-            stackView.addArrangedSubview(view)
+    func configureHeaderWith(stationName: String, lineName: String) {
+        stationNameLabel.text = stationName
+        lineNameLabel.text = lineName
+        loadingIndicatorView.startAnimating()
+    }
+    
+    func configureWith(buses: [Bus]) {
+        nextBusesView.isHidden = false
+        
+        buses.forEach {
+            let busView = BusCardViewCell(with: .init(bus: $0))
+            
+            busView.applyTextColorChange(color: defaultTextColor)
+            nextBusesView.addArrangedSubview(busView)
+            
+            busView.animate(delay: [1.5,1,0.4, 0.1].shuffled().first!)
+            
+            nextArrivalsViews.append(busView)
         }
         
-        if let viewModel = headerViewModel {
-            titleLabel.text = viewModel.title
-            subtitleLabel.text = viewModel.subtitle
-            otherLabel.text = viewModel.humanizedArrivals
-        }
-        
-        NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
-            view.widthAnchor.constraint(equalTo: stackView.widthAnchor)
-            ])
+        loadingIndicatorView.stopAnimating()
     }
     
     private func customizeAppearance() {
-        backgroundColor = .white
+        backgroundColor = defaultBackgroundColor
         stackView.backgroundColor = .clear
         
         layer.cornerRadius = 10
         layer.masksToBounds = true
         layer.shadowRadius = 2
-        layer.borderColor = UIColor.metrobus.cgColor.copy(alpha: 0.2)
+        layer.borderColor = borderColor.cgColor
         layer.borderWidth = 5
-        imageView.alpha = 0.1
-        
+        imageView.alpha = 0.5
     }
     
-    struct BusPanelHeaderViewModel {
-        let title: String
-        let subtitle: String
-        let arrivals: Int
+    func setColors() {
+        stationNameLabel.textColor = defaultTextColor
+        lineNameLabel.textColor = defaultTextColor.withAlphaComponent(0.5)
+        backgroundColor = defaultBackgroundColor
+        layer.borderColor = borderColor.cgColor
         
-        var humanizedArrivals: String {
-            get {
-                if arrivals == 1 {
-                    return "Próxima llegada".uppercased()
-                } else {
-                    return "Próximas \(arrivals) llegadas".uppercased()
-                }
-            }
-        }
+        nextArrivalsViews.forEach { $0.applyTextColorChange(color: defaultTextColor) }
+    }
+    
+    var defaultTextColor: UIColor {
+        return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.darkGray
+    }
+    
+    var defaultBackgroundColor: UIColor {
+        return traitCollection.userInterfaceStyle == .dark ? UIColor.darkBackground : UIColor.white
+    }
+    
+    var borderColor: UIColor {
+        return traitCollection.userInterfaceStyle == .dark ? UIColor.metrobusDark : UIColor.metrobus.withAlphaComponent(0.5)
     }
 }

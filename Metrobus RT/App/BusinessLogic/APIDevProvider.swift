@@ -44,13 +44,8 @@ class APIDevProvider: APIResourceProvider {
         }
     }
     
-    //func icon(for station: Station) -> NSData {
-        // TODO: For when there is a consistent way to retrieve an icon
-        //let endPoint = APIEndpoint(host: providerURL, path: "/index.php/Metrobus/Lineas")
-    //}
-    
     func nextArrivals(to stationId: String, completion: @escaping([Bus]) -> Void, failure: @escaping () -> Void) {
-        let endPoint = APIEndpoint(host: providerURL, path: "/index.php/Metrobus/Estaciones").with(params: ["id": stationId, "num_metrobuses": "8"])
+        let endPoint = APIEndpoint(host: providerURL, path: "/index.php/Metrobus/Estaciones").with(params: ["id": stationId, "num_metrobuses": "3"])
         
         let apiClient = APIJSONClient<JSON.Buses>()
         apiClient.execute(at: endPoint) { response in

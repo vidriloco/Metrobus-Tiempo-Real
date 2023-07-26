@@ -1,16 +1,20 @@
 PODS:
-  - JGProgressHUD (2.0.3)
+  - lottie-ios (4.2.0)
+  - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
-  - JGProgressHUD
+  - lottie-ios
+  - MBProgressHUD (~> 1.2.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - JGProgressHUD
+  trunk:
+    - lottie-ios
+    - MBProgressHUD
 
 SPEC CHECKSUMS:
-  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 01cd257b908ff3b8d7c6364f12f1fddd843a3e46
+PODFILE CHECKSUM: 5fa0d50006da3976f6fa321d9c485f75ba38ec8f
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.11.3

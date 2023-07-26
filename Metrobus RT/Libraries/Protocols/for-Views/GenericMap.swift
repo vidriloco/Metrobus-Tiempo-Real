@@ -11,7 +11,7 @@ import UIKit
 // MARK - Generic map view protocols
 
 protocol GenericMap {
-    func configure(on parentView: UIView)
+    func configureTapGestureRecognizers()
     func centerCameraOn(location coordinateLocation: Coordinates, animated: Bool)
     func centerMapOn(location coordinateLocation: Coordinates, animated: Bool)
     func centerMapOnUserLocation()
