@@ -1,20 +1,16 @@
 PODS:
-  - lottie-ios (4.2.0)
   - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
-  - lottie-ios
   - MBProgressHUD (~> 1.2.0)
 
 SPEC REPOS:
   trunk:
-    - lottie-ios
     - MBProgressHUD
 
 SPEC CHECKSUMS:
-  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: 5fa0d50006da3976f6fa321d9c485f75ba38ec8f
+PODFILE CHECKSUM: 732de5f01f38f8413f70766c25a84c106282f070
 
 COCOAPODS: 1.11.3

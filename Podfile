@@ -7,7 +7,6 @@ target 'Metrobus RT' do
 
   # Pods for Metrobus RT
 	pod 'MBProgressHUD', '~> 1.2.0'
-  pod 'lottie-ios'
 end
 
 post_install do |installer|
