@@ -44,6 +44,7 @@
 		3AAA7F9822568E4B00F216CC /* BusPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA7F9722568E4B00F216CC /* BusPanelView.swift */; };
 		DFCC47222A6D99090003E914 /* MapViewController+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC47212A6D99090003E914 /* MapViewController+ViewModel.swift */; };
 		DFCC47242A6DB8290003E914 /* CustomLoaderIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCC47232A6DB8290003E914 /* CustomLoaderIndicatorView.swift */; };
+		DFD220D72A83FA9400B42D0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFD220D52A83FA9400B42D0F /* InfoPlist.strings */; };
 		E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,8 @@
 		7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.debug.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCC47212A6D99090003E914 /* MapViewController+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+ViewModel.swift"; sourceTree = "<group>"; };
 		DFCC47232A6DB8290003E914 /* CustomLoaderIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoaderIndicatorView.swift; sourceTree = "<group>"; };
+		DFD220D62A83FA9400B42D0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DFD220D82A83FA9C00B42D0F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metrobus_RT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +129,7 @@
 		3A60290A22548024006A6DBF /* Metrobus RT */ = {
 			isa = PBXGroup;
 			children = (
+				DFD220D52A83FA9400B42D0F /* InfoPlist.strings */,
 				3A60292722548681006A6DBF /* App */,
 				3A60292222548641006A6DBF /* Libraries */,
 				3A60290B22548024006A6DBF /* AppDelegate.swift */,
@@ -355,6 +359,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = 3A6028FF22548024006A6DBF;
 			productRefGroup = 3A60290922548024006A6DBF /* Products */;
@@ -375,6 +380,7 @@
 				3A5CEC39225BDDEB00DC5814 /* LaunchScreen.storyboard in Resources */,
 				3A60291122548024006A6DBF /* Main.storyboard in Resources */,
 				3A5CEC3B225D3CF000DC5814 /* LinesData.plist in Resources */,
+				DFD220D72A83FA9400B42D0F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +477,15 @@
 				3A60291022548024006A6DBF /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DFD220D52A83FA9400B42D0F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFD220D62A83FA9400B42D0F /* en */,
+				DFD220D82A83FA9C00B42D0F /* es-419 */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
