@@ -44,7 +44,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen.storyboard</string>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

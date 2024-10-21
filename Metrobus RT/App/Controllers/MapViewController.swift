@@ -32,7 +32,6 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Initialize the web view
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)

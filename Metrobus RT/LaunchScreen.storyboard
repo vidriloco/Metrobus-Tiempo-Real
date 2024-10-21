@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fHc-tg-a4n">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,30 +9,34 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="W4l-rz-pSS">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                <viewController id="fHc-tg-a4n" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zwX-ui-cSM"/>
+                        <viewControllerLayoutGuide type="bottom" id="76K-nf-D5G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eIH-Cp-XCw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metrobus-wikiando" translatesAutoresizingMaskIntoConstraints="NO" id="PC1-8W-ie0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metrobus-wikiando" translatesAutoresizingMaskIntoConstraints="NO" id="Tts-1R-9bl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="FgW-om-fHU"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PC1-8W-ie0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0TD-Sa-QkY"/>
-                            <constraint firstItem="PC1-8W-ie0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3nL-33-Jrs"/>
-                            <constraint firstItem="PC1-8W-ie0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SAU-mj-9HM"/>
-                            <constraint firstItem="PC1-8W-ie0" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kPO-KZ-SM3"/>
+                            <constraint firstItem="Tts-1R-9bl" firstAttribute="height" secondItem="eIH-Cp-XCw" secondAttribute="height" id="Jo7-vQ-pAS"/>
+                            <constraint firstItem="Tts-1R-9bl" firstAttribute="width" secondItem="eIH-Cp-XCw" secondAttribute="width" id="QpJ-V8-ssh"/>
+                            <constraint firstItem="Tts-1R-9bl" firstAttribute="centerY" secondItem="eIH-Cp-XCw" secondAttribute="centerY" id="S98-oA-Qaj"/>
+                            <constraint firstItem="Tts-1R-9bl" firstAttribute="centerX" secondItem="eIH-Cp-XCw" secondAttribute="centerX" id="Vjx-w3-t4c"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cH-7i-VlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="80.152671755725194" y="264.08450704225356"/>
         </scene>
     </scenes>
     <resources>
