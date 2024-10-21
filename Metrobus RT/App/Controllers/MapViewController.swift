@@ -7,275 +7,166 @@
 //
 
 import UIKit
-import MapKit
-import MBProgressHUD
 import CoreLocation
-import Combine
+import WebKit
+import StoreKit
+import AppReview
 
-class MapViewController: UIViewController {
-    private var cancellables: Set<AnyCancellable> = []
+class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManagerDelegate {
+    var webView: WKWebView!
+    
+    // Add a button to center the user on the map
+    /*let centerUserButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 10
+        button.setTitle("Center User", for: .normal)
+        button.addTarget(self, action: #selector(centerUserOnMap), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()*/
+    
+    var locationManager: CLLocationManager!
+    let loadingIndicator = UIActivityIndicatorView()
+    let loadingLabel = UILabel()
 
-    private lazy var mapView: AppleMapView = {
-        let view = AppleMapView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.configureTapGestureRecognizers()
-        
-        view.isZoomEnabled = true
-        view.isPitchEnabled = true
-        
-        view.centerMapOn(location: locationCoordinates, animated: true)
-        view.centerCameraOn(location: locationCoordinates, animated: true)
-        
-        return view
-    }()
-    
-    private let locationCoordinates: Coordinates
-    private let apiDevProvider: APIDevProvider
-    private let linesGeometryDataSource: LinesGeometryDataSource
-        
-    private var stations = [Station]()
-    
-    private lazy var locationManager: CLLocationManager = {
-        let locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        
-        return locationManager
-    }()
-    
-    private let viewModel: ViewModel
-    
-    init(location: Coordinates, apiDevProvider: APIDevProvider, linesGeometryDataSource: LinesGeometryDataSource) {
-        self.locationCoordinates = location
-        self.apiDevProvider = apiDevProvider
-        self.linesGeometryDataSource = linesGeometryDataSource
-        self.viewModel = ViewModel(with: apiDevProvider)
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavigationBar()
-        configureMapViewHierachy()
-        bindViewModel()
-                
-        mapView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        // Initialize the web view
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.navigationDelegate = self
+        view.addSubview(webView)
         
-        fetchLinesData()
-        fetchLinesGeometryData()
-    }
-    
-    private func configureNavigationBar() {
-        let nav = navigationController?.navigationBar
+        // Add a loading indicator
+        // Add a text label above the loading indicator
+        loadingLabel.text = "Cargando el mapa"
+        loadingLabel.font = .systemFont(ofSize: 15, weight: .bold)
+        loadingLabel.textColor = .gray
+        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loadingLabel)
         
-        nav?.isTranslucent = false
-        nav?.setBackgroundImage(UIImage(named: "nav-bar-bg"), for: .default)
-        nav?.shadowImage = UIImage(named: "shadow-bar-bg")
-        nav?.backgroundColor = UIColor.metrobus
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+        // Add a loading indicator
+        loadingIndicator.center = view.center
+        loadingIndicator.startAnimating()
+        view.addSubview(loadingIndicator)
         
-        imageView.contentMode = .scaleAspectFit
-        
-        let image = UIImage(named: "nav-bar-logo")
-        imageView.image = image
-        
-        navigationItem.titleView = imageView
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "locate-me"), style: .plain, target: self, action: #selector(determineMyCurrentLocation))
-        nav?.tintColor = .white
-    }
-    
-    private func configureMapViewHierachy() {
-        
-        view.addSubview(mapView)
-        
+        // Set up auto layout constraints for the loading label
         NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: mapView.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: mapView.trailingAnchor),
-            view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: mapView.topAnchor),
-            view.bottomAnchor.constraint(equalTo: mapView.bottomAnchor)
+            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingLabel.bottomAnchor.constraint(equalTo: loadingIndicator.topAnchor, constant: -20)
         ])
         
-    }
-    
-    private func fetchLinesData() {
-        let hud = MBProgressHUD(view: view)
-        hud.show(animated: true)
+        // Stop the loading indicator when the page finishes loading
+        webView.navigationDelegate = self
         
-        if stations.isEmpty {
-            apiDevProvider.allLines(completion: { lines in
-                lines.forEach({ line in
-                    line.stations.forEach { [weak self] station in
-                        
-                        guard let self = self else { return }
-                        self.mapView.addPinToMap(at: station, title: station.name, isUnique: false)
-                        self.stations.append(station)
-                    }
-                })
-                hud.hide(animated: true)
-            }) { [weak self] in
-                
-                guard let self = self else { return }
-                
-                hud.hide(animated: true)
-                self.displayFailedFetchingLinesErrorAlert()
-            }
-        }
-    }
-    
-    var busPanelView: BusPanelView?
-    
-    func configureBusPanelView() {
-        guard busPanelView == nil else { return }
-        
-        busPanelView = BusPanelView()
-        
-        guard let busPanelView = busPanelView else { return }
-        
-        mapView.addSubview(busPanelView)
-        
-        busPanelView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([view.bottomAnchor.constraint(equalTo: busPanelView.bottomAnchor, constant: 80),
-                                     busPanelView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                                     view.trailingAnchor.constraint(equalTo: busPanelView.trailingAnchor, constant: 20)])
-    }
-    
-    func bindViewModel() {
-        viewModel.$selectedStation.sink { station in
-            guard let station = station else { return }
-            
-            self.configureBusPanelView()
-            
-            self.busPanelView?.configureHeaderWith(stationName: station.name, lineName: station.lineName)
-        }.store(in: &cancellables)
-        
-        viewModel.$availableBuses.sink { buses in
-            if buses.isEmpty { return }
+        // Set up auto layout constraints
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
 
-            self.configureBusPanelView()
-            
-            self.busPanelView?.configureWith(buses: buses)
-        }.store(in: &cancellables)
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        busPanelView?.setColors()
-    }
-    
-    private func displayFailedFetchingLinesErrorAlert() {
-        let alert = UIAlertController(title: "Ujule", message: "No pudimos descargar el mapa de las líneas. Revisa tu conexión a internet.", preferredStyle: .alert)
+        // Add the center user button to the view
+        /*view.addSubview(centerUserButton)
+        NSLayoutConstraint.activate([
+            centerUserButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            centerUserButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            centerUserButton.widthAnchor.constraint(equalToConstant: 100),
+            centerUserButton.heightAnchor.constraint(equalToConstant: 50)
+        ])*/
         
-        alert.addAction(UIAlertAction(title: "Intentar de nuevo", style: .default, handler: { action in
-            self.fetchLinesData()
+        // Load a URL
+        if let url = URL(string: "https://wikiando.mx/mobile") {
+            webView.load(URLRequest(url: url))
+        }
+        
+        AppReview.requestIf(launches: 3, days: 3)
+    }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingIndicator.stopAnimating()
+        loadingIndicator.removeFromSuperview()
+        loadingLabel.removeFromSuperview()
+    }
+    
+    func showRateUsPrompt() {
+        let alert = UIAlertController(title: "Rate Us", message: "If you enjoy using our app, would you mind taking a moment to rate us? Your feedback helps us improve!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Rate Now", style: .default, handler: { _ in
+            self.requestAppReview()
         }))
         
-        self.present(alert, animated: true)
+        alert.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
-    
-    private func displayFailedFetchingStationErrorAlert() {
-        let alert = UIAlertController(title: "Ujule", message: "No pudimos cargar la info de esta estación", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
-        
-        self.present(alert, animated: true)
-    }
-    
-    private func displayEmptyBusesAlert() {
-        let alert = UIAlertController(title: "Aviso", message: "No hay autobuses llegando a esta estación en este momento", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
-        
-        self.present(alert, animated: true)
-    }
-    
-    private func fetchLinesGeometryData() {
-        linesGeometryDataSource.allLinesPaths { lines in
-            
-            lines.forEach({ line in
-                
-                line.paths.forEach({ paths in
-                    var locations = [Coordinates]()
 
-                    paths.forEach({ coordinates in
-                        if let latitude = coordinates.first, let longitude = coordinates.last {
-                            locations.append(Location(latitude: latitude, longitude: longitude))
-                        }
-                        self.mapView.addRouteToMap(with: locations, title: "\(line.number)")
-
-                    })
-                    
-                })
-                
-            })
+    func requestAppReview() {
+        if #available(iOS 10.3, *) {
+            SKStoreReviewController.requestReview()
         }
     }
-}
 
-extension MapViewController: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) { }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        busPanelView?.removeFromSuperview()
-        busPanelView = nil
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    @objc func centerUserOnMap() {
+        // Implement the logic to center the user on the map
+        print("Centering user on the map...")
         
-        guard let coordinate = view.annotation?.coordinate else {
+        // Check if location services are enabled
+        guard CLLocationManager.locationServicesEnabled() else {
+            print("Location services are not enabled")
             return
         }
-
-        // TODO: Improve centering on poi
-        self.mapView.centerCameraOn(location: Location(latitude: coordinate.latitude, longitude: coordinate.longitude), animated: true)
-        guard let station = stations.first(where: { $0.equals(to: coordinate) }) else { return }
         
-        viewModel.fetchStationData(at: station)
+        // Request the current location
+        locationManager.requestLocation()
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if let polyline = overlay as? MKPolyline {
-            let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-            
-            testlineRenderer.strokeColor = LineView.colorForLine(with: polyline.title)
-            testlineRenderer.lineWidth = 2.0
-            return testlineRenderer
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if #available(iOS 14.0, *) {
+            switch manager.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:
+                print("Location access granted")
+            case .denied, .restricted:
+                print("Location access denied/restricted")
+            case .notDetermined:
+                print("Location access not determined")
+            @unknown default:
+                print("Unknown location authorization status")
+            }
+        } else {
+            // Fallback on earlier versions
         }
-        return MKOverlayRenderer()
     }
     
-}
-
-extension MapViewController: CLLocationManagerDelegate {
-    @objc func determineMyCurrentLocation() {
-        locationManager.startUpdatingLocation()
+    @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLocation = locations.first {
+            let coordinate = currentLocation.coordinate
+            print("User's current location: \(coordinate.latitude), \(coordinate.longitude)")
+            
+            // Center the map on the user's location
+            //let center = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            
+            // Center the Mapbox map on the user's location using JavaScript
+            let jsCode = "map.setCenter([\(coordinate.longitude), \(coordinate.latitude)]);"
+            webView.evaluateJavaScript(jsCode) { (result, error) in
+                if let error = error {
+                    print("Failed to set map center: \(error.localizedDescription)")
+                } else {
+                    print("Map center set successfully")
+                }
+            }
+        } else {
+            print("Unable to retrieve user's current location")
+        }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        mapView.centerMapOnUserLocation()
-        locationManager.stopUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
-        print("Error \(error)")
-    }
-}
-
-extension Station {
-    func equals(to coordinate: CLLocationCoordinate2D) -> Bool {
-        return self.longitude == coordinate.longitude && self.latitude == coordinate.latitude
+    @objc func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to get user's location: \(error.localizedDescription)")
     }
 }

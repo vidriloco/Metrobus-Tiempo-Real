@@ -5,4 +5,4 @@
   Created by Alejandro Cruz on 09/08/2023.
   Copyright © 2023 El Chahuistle. All rights reserved.
 */
-"NSLocationWhenInUseUsageDescription" = "You tapped on the compass. We need to access your location once to center the map on your current location.";
+"NSLocationWhenInUseUsageDescription" = "We need access to your location to accurately show you your location on the map.";

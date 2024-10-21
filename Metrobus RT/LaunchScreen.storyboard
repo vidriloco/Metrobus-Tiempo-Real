@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,24 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I17-wb-Hvj">
-                                <rect key="frame" x="177.5" y="540" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metrobus-rt" translatesAutoresizingMaskIntoConstraints="NO" id="q1C-Vm-iZc">
-                                <rect key="frame" x="135.5" y="184" width="104" height="322"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="44h-YP-HGX"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="metrobus-wikiando" translatesAutoresizingMaskIntoConstraints="NO" id="PC1-8W-ie0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="q1C-Vm-iZc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="J4Q-vU-hiB"/>
-                            <constraint firstItem="I17-wb-Hvj" firstAttribute="top" secondItem="q1C-Vm-iZc" secondAttribute="bottom" constant="34" id="jkf-hA-cpg"/>
-                            <constraint firstItem="I17-wb-Hvj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uEh-4U-d68"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I17-wb-Hvj" secondAttribute="bottom" constant="107" id="wfq-am-J5i"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PC1-8W-ie0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0TD-Sa-QkY"/>
+                            <constraint firstItem="PC1-8W-ie0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3nL-33-Jrs"/>
+                            <constraint firstItem="PC1-8W-ie0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SAU-mj-9HM"/>
+                            <constraint firstItem="PC1-8W-ie0" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kPO-KZ-SM3"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -44,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="metrobus-rt" width="162" height="322"/>
+        <image name="metrobus-wikiando" width="1024" height="1349"/>
     </resources>
 </document>

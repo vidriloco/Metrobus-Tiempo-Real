@@ -1,16 +1,21 @@
 PODS:
-  - MBProgressHUD (1.2.0)
+  - AppReview (0.0.2)
 
 DEPENDENCIES:
-  - MBProgressHUD (~> 1.2.0)
+  - AppReview (from `https://github.com/mezhevikin/AppReview.git`)
 
-SPEC REPOS:
-  trunk:
-    - MBProgressHUD
+EXTERNAL SOURCES:
+  AppReview:
+    :git: https://github.com/mezhevikin/AppReview.git
+
+CHECKOUT OPTIONS:
+  AppReview:
+    :commit: c9f027b808c5bc934ab741051e8fe1a0455aedd7
+    :git: https://github.com/mezhevikin/AppReview.git
 
 SPEC CHECKSUMS:
-  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  AppReview: 7dfd2ba3456a51f11a07dc4f26f11fc1deb9161f
 
-PODFILE CHECKSUM: 732de5f01f38f8413f70766c25a84c106282f070
+PODFILE CHECKSUM: c0fc47f4eb8402c7c5f68a16d03f2acfbfd6534a
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2
