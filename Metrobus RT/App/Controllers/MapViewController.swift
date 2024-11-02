@@ -16,19 +16,35 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
     var webView: WKWebView!
     
     // Add a button to center the user on the map
-    /*let centerUserButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = 10
-        button.setTitle("Center User", for: .normal)
-        button.addTarget(self, action: #selector(centerUserOnMap), for: .touchUpInside)
+    let searchButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "search-icon"), for: .normal)
+        button.addTarget(self, action: #selector(displaySearchList), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.opacity = 0
         return button
-    }()*/
+    }()
     
     var locationManager: CLLocationManager!
-    let loadingIndicator = UIActivityIndicatorView()
-    let loadingLabel = UILabel()
+    var loadingBackground: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = UIImage(named: "metrobus-wikiando")
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+
+    var loadingIndicator: UIActivityIndicatorView = {
+        var indicator = UIActivityIndicatorView()
+        
+        if #available(iOS 13.0, *) {
+            indicator = UIActivityIndicatorView(style: .medium)
+        }
+        
+        indicator.color = .white
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,23 +56,14 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
         webView.navigationDelegate = self
         view.addSubview(webView)
         
-        // Add a loading indicator
-        // Add a text label above the loading indicator
-        loadingLabel.text = "Cargando el mapa"
-        loadingLabel.font = .systemFont(ofSize: 15, weight: .bold)
-        loadingLabel.textColor = .gray
-        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loadingLabel)
-        
-        // Add a loading indicator
-        loadingIndicator.center = view.center
-        loadingIndicator.startAnimating()
-        view.addSubview(loadingIndicator)
+        view.addSubview(loadingBackground)
         
         // Set up auto layout constraints for the loading label
         NSLayoutConstraint.activate([
-            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingLabel.bottomAnchor.constraint(equalTo: loadingIndicator.topAnchor, constant: -20)
+            loadingBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingBackground.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
         // Stop the loading indicator when the page finishes loading
@@ -71,14 +78,21 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
             webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
-        // Add the center user button to the view
-        /*view.addSubview(centerUserButton)
+        view.addSubview(loadingIndicator)
         NSLayoutConstraint.activate([
-            centerUserButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            centerUserButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            centerUserButton.widthAnchor.constraint(equalToConstant: 100),
-            centerUserButton.heightAnchor.constraint(equalToConstant: 50)
-        ])*/
+            loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+        ])
+        loadingIndicator.startAnimating()
+
+        // Add the center user button to the view
+        view.addSubview(searchButton)
+        NSLayoutConstraint.activate([
+            searchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            searchButton.widthAnchor.constraint(equalToConstant: 50),
+            searchButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
         
         // Load a URL
         if let url = URL(string: "https://wikiando.mx/mobile") {
@@ -89,9 +103,9 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingBackground.removeFromSuperview()
         loadingIndicator.stopAnimating()
-        loadingIndicator.removeFromSuperview()
-        loadingLabel.removeFromSuperview()
+        searchButton.layer.opacity = 1
     }
     
     func showRateUsPrompt() {
@@ -112,18 +126,25 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
         }
     }
 
-    @objc func centerUserOnMap() {
-        // Implement the logic to center the user on the map
-        print("Centering user on the map...")
-        
-        // Check if location services are enabled
-        guard CLLocationManager.locationServicesEnabled() else {
-            print("Location services are not enabled")
-            return
+    @objc func displaySearchList() {
+        let viewModel = SearchPlacesViewController.ViewModel()
+        viewModel.didSelectALocation = { [weak self] location in
+            guard let self = self else { return }
+            let jsCode = "var newCenter = [\(location.longitude), \(location.latitude)]; map.flyTo({ center: newCenter, zoom: 15, duration: 1500 })"
+            
+            self.webView.evaluateJavaScript(jsCode) { (result, error) in
+                if let error = error {
+                    print("Failed to set map center: \(error.localizedDescription)")
+                } else {
+                    print("Map center set successfully")
+                }
+            }
         }
         
-        // Request the current location
-        locationManager.requestLocation()
+        let searchViewController = SearchPlacesViewController(with: viewModel)
+        searchViewController.modalPresentationStyle = .popover
+        searchViewController.modalTransitionStyle = .coverVertical
+        present(searchViewController, animated: true, completion: nil)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

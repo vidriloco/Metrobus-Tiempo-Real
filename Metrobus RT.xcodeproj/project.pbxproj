@@ -26,6 +26,9 @@
 		3A60295122548E98006A6DBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A60295022548E98006A6DBF /* MapKit.framework */; };
 		3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */; };
 		3AA7EDCA225916E40017B2C9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDC9225916E40017B2C9 /* String.swift */; };
+		DF1959FD2CD5C53900ED9829 /* SearchPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */; };
+		DF1959FF2CD5F89C00ED9829 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */; };
+		DF195A012CD5F8C000ED9829 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */; };
 		DFCBFDF62CC6243600A006D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFCBFDF52CC6243600A006D4 /* Assets.xcassets */; };
 		DFCBFDFA2CC62FC500A006D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */; };
 		DFD220D72A83FA9400B42D0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFD220D52A83FA9400B42D0F /* InfoPlist.strings */; };
@@ -56,6 +59,9 @@
 		3AA7EDC9225916E40017B2C9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.release.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.release.xcconfig"; sourceTree = "<group>"; };
 		7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.debug.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.debug.xcconfig"; sourceTree = "<group>"; };
+		DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesViewController.swift; sourceTree = "<group>"; };
+		DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		DFCBFDF52CC6243600A006D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFD220D62A83FA9400B42D0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		3A60291D225485DD006A6DBF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */,
 				3A60292822548740006A6DBF /* MapViewController.swift */,
 			);
 			path = Controllers;
@@ -193,6 +200,8 @@
 		3A602930225488D1006A6DBF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */,
+				DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,6 +396,9 @@
 				3A60293C22548984006A6DBF /* Dictionary.swift in Sources */,
 				3A60292622548665006A6DBF /* Coordinator.swift in Sources */,
 				3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */,
+				DF1959FD2CD5C53900ED9829 /* SearchPlacesViewController.swift in Sources */,
+				DF1959FF2CD5F89C00ED9829 /* EmptyStateView.swift in Sources */,
+				DF195A012CD5F8C000ED9829 /* LocationTableViewCell.swift in Sources */,
 				3A60293E22548984006A6DBF /* UIView.swift in Sources */,
 				3A60294722548A12006A6DBF /* Result.swift in Sources */,
 				3A60293B22548984006A6DBF /* UIViewController.swift in Sources */,
@@ -565,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -590,7 +602,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
