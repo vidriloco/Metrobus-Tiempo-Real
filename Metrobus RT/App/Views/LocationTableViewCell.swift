@@ -55,7 +55,7 @@ class LocationTableViewCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [verticalLeftStackView, verticalRightStackView])
         stackView.axis = .horizontal
         stackView.spacing = 8
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -80,7 +80,7 @@ class LocationTableViewCell: UITableViewCell {
             horizontalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             horizontalStackView.widthAnchor.constraint(equalToConstant: 40),
             horizontalStackView.heightAnchor.constraint(equalToConstant: 40),
-            verticalLeftStackView.widthAnchor.constraint(equalToConstant: 50)
+            verticalLeftStackView.widthAnchor.constraint(equalToConstant: 60)
         ])
     }
     

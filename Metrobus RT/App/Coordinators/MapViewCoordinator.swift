@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapViewCoordinator: Coordinator {
+class MapViewCoordinator {
     private let presenter: UINavigationController
     
     private var mapViewController: MapViewController?

@@ -3,29 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60290B22548024006A6DBF /* AppDelegate.swift */; };
 		3A60291122548024006A6DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60290F22548024006A6DBF /* Main.storyboard */; };
 		3A6029212254861B006A6DBF /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6029202254861B006A6DBF /* RootCoordinator.swift */; };
-		3A60292622548665006A6DBF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60292522548665006A6DBF /* Coordinator.swift */; };
 		3A60292922548740006A6DBF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60292822548740006A6DBF /* MapViewController.swift */; };
-		3A60292C225487AF006A6DBF /* GenericMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60292B225487AF006A6DBF /* GenericMap.swift */; };
-		3A60292F225487EE006A6DBF /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60292E225487EE006A6DBF /* Coordinates.swift */; };
-		3A60293B22548984006A6DBF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60293622548983006A6DBF /* UIViewController.swift */; };
-		3A60293C22548984006A6DBF /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60293722548983006A6DBF /* Dictionary.swift */; };
-		3A60293D22548984006A6DBF /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60293822548983006A6DBF /* NSObject.swift */; };
-		3A60293E22548984006A6DBF /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60293922548984006A6DBF /* UIView.swift */; };
-		3A60293F22548984006A6DBF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60293A22548984006A6DBF /* UIColor.swift */; };
-		3A60294522548A12006A6DBF /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60294222548A12006A6DBF /* APIEndpoint.swift */; };
-		3A60294722548A12006A6DBF /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60294422548A12006A6DBF /* Result.swift */; };
-		3A60294A22548AAE006A6DBF /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60294922548AAE006A6DBF /* API.swift */; };
-		3A60294C22548ACF006A6DBF /* APIResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60294B22548ACF006A6DBF /* APIResourceProvider.swift */; };
 		3A60295122548E98006A6DBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A60295022548E98006A6DBF /* MapKit.framework */; };
 		3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */; };
-		3AA7EDCA225916E40017B2C9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7EDC9225916E40017B2C9 /* String.swift */; };
 		DF1959FD2CD5C53900ED9829 /* SearchPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */; };
 		DF1959FF2CD5F89C00ED9829 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */; };
 		DF195A012CD5F8C000ED9829 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */; };
@@ -35,39 +22,62 @@
 		E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DF79FBE62CD9B0770052A52E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A60290022548024006A6DBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF79FBCF2CD9B0750052A52E;
+			remoteInfo = Mexibus;
+		};
+		DF79FBF02CD9B0770052A52E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A60290022548024006A6DBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF79FBCF2CD9B0750052A52E;
+			remoteInfo = Mexibus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3A60290822548024006A6DBF /* Metrobus RT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metrobus RT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A60290B22548024006A6DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A60291022548024006A6DBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A60291722548026006A6DBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A6029202254861B006A6DBF /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		3A60292522548665006A6DBF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3A60292822548740006A6DBF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		3A60292B225487AF006A6DBF /* GenericMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericMap.swift; sourceTree = "<group>"; };
-		3A60292E225487EE006A6DBF /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
-		3A60293622548983006A6DBF /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		3A60293722548983006A6DBF /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		3A60293822548983006A6DBF /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
-		3A60293922548984006A6DBF /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		3A60293A22548984006A6DBF /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		3A60294222548A12006A6DBF /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
-		3A60294422548A12006A6DBF /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		3A60294922548AAE006A6DBF /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		3A60294B22548ACF006A6DBF /* APIResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResourceProvider.swift; sourceTree = "<group>"; };
 		3A60295022548E98006A6DBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
-		3AA7EDC9225916E40017B2C9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.release.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.release.xcconfig"; sourceTree = "<group>"; };
 		7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.debug.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.debug.xcconfig"; sourceTree = "<group>"; };
 		DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesViewController.swift; sourceTree = "<group>"; };
 		DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		DF79FBD02CD9B0750052A52E /* Mexibus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mexibus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MexibusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MexibusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFCBFDF52CC6243600A006D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFD220D62A83FA9400B42D0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DFD220D82A83FA9C00B42D0F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metrobus_RT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DF79FBFD2CD9B0770052A52E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DF79FBCF2CD9B0750052A52E /* Mexibus */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		DF79FBD12CD9B0750052A52E /* Mexibus */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (DF79FBFD2CD9B0770052A52E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Mexibus; sourceTree = "<group>"; };
+		DF79FBE82CD9B0770052A52E /* MexibusTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MexibusTests; sourceTree = "<group>"; };
+		DF79FBF22CD9B0770052A52E /* MexibusUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MexibusUITests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3A60290522548024006A6DBF /* Frameworks */ = {
@@ -79,6 +89,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF79FBCD2CD9B0750052A52E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBE22CD9B0770052A52E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBEC2CD9B0770052A52E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,6 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				3A60290A22548024006A6DBF /* Metrobus RT */,
+				DF79FBD12CD9B0750052A52E /* Mexibus */,
+				DF79FBE82CD9B0770052A52E /* MexibusTests */,
+				DF79FBF22CD9B0770052A52E /* MexibusUITests */,
 				3A60290922548024006A6DBF /* Products */,
 				3A60294F22548E98006A6DBF /* Frameworks */,
 				DC38D8B411B7AFE480A69FAA /* Pods */,
@@ -96,6 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				3A60290822548024006A6DBF /* Metrobus RT.app */,
+				DF79FBD02CD9B0750052A52E /* Mexibus.app */,
+				DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */,
+				DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,7 +142,6 @@
 			children = (
 				DFD220D52A83FA9400B42D0F /* InfoPlist.strings */,
 				3A60292722548681006A6DBF /* App */,
-				3A60292222548641006A6DBF /* Libraries */,
 				3A60290B22548024006A6DBF /* AppDelegate.swift */,
 				3A60290F22548024006A6DBF /* Main.storyboard */,
 				3A60291722548026006A6DBF /* Info.plist */,
@@ -124,13 +160,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		3A60291E225485F6006A6DBF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		3A60291F225485FC006A6DBF /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,61 +169,14 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		3A60292222548641006A6DBF /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				3A602940225489F3006A6DBF /* Helpers */,
-				3A6029352254896A006A6DBF /* Extensions */,
-				3A60292322548647006A6DBF /* Protocols */,
-			);
-			path = Libraries;
-			sourceTree = "<group>";
-		};
-		3A60292322548647006A6DBF /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				3A60294822548A59006A6DBF /* for-BusinessLogic */,
-				3A60292D225487D1006A6DBF /* for-DataModelling */,
-				3A60292A2254879A006A6DBF /* for-Views */,
-				3A60292422548655006A6DBF /* for-Presentation */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		3A60292422548655006A6DBF /* for-Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				3A60292522548665006A6DBF /* Coordinator.swift */,
-			);
-			path = "for-Presentation";
-			sourceTree = "<group>";
-		};
 		3A60292722548681006A6DBF /* App */ = {
 			isa = PBXGroup;
 			children = (
-				3A60295422549367006A6DBF /* BusinessLogic */,
 				3A602930225488D1006A6DBF /* Views */,
 				3A60291F225485FC006A6DBF /* Coordinators */,
-				3A60291E225485F6006A6DBF /* Models */,
 				3A60291D225485DD006A6DBF /* Controllers */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		3A60292A2254879A006A6DBF /* for-Views */ = {
-			isa = PBXGroup;
-			children = (
-				3A60292B225487AF006A6DBF /* GenericMap.swift */,
-			);
-			path = "for-Views";
-			sourceTree = "<group>";
-		};
-		3A60292D225487D1006A6DBF /* for-DataModelling */ = {
-			isa = PBXGroup;
-			children = (
-				3A60292E225487EE006A6DBF /* Coordinates.swift */,
-			);
-			path = "for-DataModelling";
 			sourceTree = "<group>";
 		};
 		3A602930225488D1006A6DBF /* Views */ = {
@@ -206,46 +188,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3A6029352254896A006A6DBF /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3A60293722548983006A6DBF /* Dictionary.swift */,
-				3A60293822548983006A6DBF /* NSObject.swift */,
-				3A60293A22548984006A6DBF /* UIColor.swift */,
-				3A60293922548984006A6DBF /* UIView.swift */,
-				3A60293622548983006A6DBF /* UIViewController.swift */,
-				3AA7EDC9225916E40017B2C9 /* String.swift */,
-			);
-			name = Extensions;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		3A602940225489F3006A6DBF /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				3A60294122548A00006A6DBF /* APIs */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		3A60294122548A00006A6DBF /* APIs */ = {
-			isa = PBXGroup;
-			children = (
-				3A60294222548A12006A6DBF /* APIEndpoint.swift */,
-				3A60294422548A12006A6DBF /* Result.swift */,
-			);
-			path = APIs;
-			sourceTree = "<group>";
-		};
-		3A60294822548A59006A6DBF /* for-BusinessLogic */ = {
-			isa = PBXGroup;
-			children = (
-				3A60294922548AAE006A6DBF /* API.swift */,
-				3A60294B22548ACF006A6DBF /* APIResourceProvider.swift */,
-			);
-			path = "for-BusinessLogic";
-			sourceTree = "<group>";
-		};
 		3A60294F22548E98006A6DBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,13 +195,6 @@
 				E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3A60295422549367006A6DBF /* BusinessLogic */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
 		DC38D8B411B7AFE480A69FAA /* Pods */ = {
@@ -283,6 +218,7 @@
 				3A60290522548024006A6DBF /* Frameworks */,
 				3A60290622548024006A6DBF /* Resources */,
 				45F59E14FACB16005392BEC2 /* [CP] Embed Pods Frameworks */,
+				D260F494269FDDFBEB464DCF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -293,13 +229,81 @@
 			productReference = 3A60290822548024006A6DBF /* Metrobus RT.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DF79FBCF2CD9B0750052A52E /* Mexibus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF79FBFE2CD9B0770052A52E /* Build configuration list for PBXNativeTarget "Mexibus" */;
+			buildPhases = (
+				DF79FBCC2CD9B0750052A52E /* Sources */,
+				DF79FBCD2CD9B0750052A52E /* Frameworks */,
+				DF79FBCE2CD9B0750052A52E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DF79FBD12CD9B0750052A52E /* Mexibus */,
+			);
+			name = Mexibus;
+			packageProductDependencies = (
+			);
+			productName = Mexibus;
+			productReference = DF79FBD02CD9B0750052A52E /* Mexibus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DF79FBE42CD9B0770052A52E /* MexibusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF79FBFF2CD9B0770052A52E /* Build configuration list for PBXNativeTarget "MexibusTests" */;
+			buildPhases = (
+				DF79FBE12CD9B0770052A52E /* Sources */,
+				DF79FBE22CD9B0770052A52E /* Frameworks */,
+				DF79FBE32CD9B0770052A52E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF79FBE72CD9B0770052A52E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DF79FBE82CD9B0770052A52E /* MexibusTests */,
+			);
+			name = MexibusTests;
+			packageProductDependencies = (
+			);
+			productName = MexibusTests;
+			productReference = DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DF79FBEE2CD9B0770052A52E /* MexibusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF79FC002CD9B0770052A52E /* Build configuration list for PBXNativeTarget "MexibusUITests" */;
+			buildPhases = (
+				DF79FBEB2CD9B0770052A52E /* Sources */,
+				DF79FBEC2CD9B0770052A52E /* Frameworks */,
+				DF79FBED2CD9B0770052A52E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF79FBF12CD9B0770052A52E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DF79FBF22CD9B0770052A52E /* MexibusUITests */,
+			);
+			name = MexibusUITests;
+			packageProductDependencies = (
+			);
+			productName = MexibusUITests;
+			productReference = DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3A60290022548024006A6DBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1600;
 				ORGANIZATIONNAME = "El Chahuistle";
 				TargetAttributes = {
 					3A60290722548024006A6DBF = {
@@ -309,6 +313,17 @@
 								enabled = 1;
 							};
 						};
+					};
+					DF79FBCF2CD9B0750052A52E = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					DF79FBE42CD9B0770052A52E = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = DF79FBCF2CD9B0750052A52E;
+					};
+					DF79FBEE2CD9B0770052A52E = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = DF79FBCF2CD9B0750052A52E;
 					};
 				};
 			};
@@ -327,6 +342,9 @@
 			projectRoot = "";
 			targets = (
 				3A60290722548024006A6DBF /* Metrobus RT */,
+				DF79FBCF2CD9B0750052A52E /* Mexibus */,
+				DF79FBE42CD9B0770052A52E /* MexibusTests */,
+				DF79FBEE2CD9B0770052A52E /* MexibusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -340,6 +358,27 @@
 				DFD220D72A83FA9400B42D0F /* InfoPlist.strings in Resources */,
 				DFCBFDFA2CC62FC500A006D4 /* LaunchScreen.storyboard in Resources */,
 				DFCBFDF62CC6243600A006D4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBCE2CD9B0750052A52E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBE32CD9B0770052A52E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBED2CD9B0770052A52E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +424,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D260F494269FDDFBEB464DCF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -392,30 +448,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A60293D22548984006A6DBF /* NSObject.swift in Sources */,
-				3A60293C22548984006A6DBF /* Dictionary.swift in Sources */,
-				3A60292622548665006A6DBF /* Coordinator.swift in Sources */,
 				3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */,
 				DF1959FD2CD5C53900ED9829 /* SearchPlacesViewController.swift in Sources */,
 				DF1959FF2CD5F89C00ED9829 /* EmptyStateView.swift in Sources */,
 				DF195A012CD5F8C000ED9829 /* LocationTableViewCell.swift in Sources */,
-				3A60293E22548984006A6DBF /* UIView.swift in Sources */,
-				3A60294722548A12006A6DBF /* Result.swift in Sources */,
-				3A60293B22548984006A6DBF /* UIViewController.swift in Sources */,
-				3A60294522548A12006A6DBF /* APIEndpoint.swift in Sources */,
-				3A60292F225487EE006A6DBF /* Coordinates.swift in Sources */,
-				3A60294C22548ACF006A6DBF /* APIResourceProvider.swift in Sources */,
-				3AA7EDCA225916E40017B2C9 /* String.swift in Sources */,
-				3A60292C225487AF006A6DBF /* GenericMap.swift in Sources */,
-				3A60293F22548984006A6DBF /* UIColor.swift in Sources */,
 				3A6029212254861B006A6DBF /* RootCoordinator.swift in Sources */,
 				3A60292922548740006A6DBF /* MapViewController.swift in Sources */,
-				3A60294A22548AAE006A6DBF /* API.swift in Sources */,
 				3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF79FBCC2CD9B0750052A52E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBE12CD9B0770052A52E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF79FBEB2CD9B0770052A52E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF79FBE72CD9B0770052A52E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF79FBCF2CD9B0750052A52E /* Mexibus */;
+			targetProxy = DF79FBE62CD9B0770052A52E /* PBXContainerItemProxy */;
+		};
+		DF79FBF12CD9B0770052A52E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF79FBCF2CD9B0750052A52E /* Mexibus */;
+			targetProxy = DF79FBF02CD9B0770052A52E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A60290F22548024006A6DBF /* Main.storyboard */ = {
@@ -567,7 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
 				INFOPLIST_FILE = "Metrobus RT/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Metrobus CDMX";
@@ -577,7 +654,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -592,7 +669,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
 				INFOPLIST_FILE = "Metrobus RT/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Metrobus CDMX";
@@ -602,11 +679,170 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DF79FBF72CD9B0770052A52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mexibus/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.Mexibus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DF79FBF82CD9B0770052A52E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mexibus/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.Mexibus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DF79FBF92CD9B0770052A52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.MexibusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mexibus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mexibus";
+			};
+			name = Debug;
+		};
+		DF79FBFA2CD9B0770052A52E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.MexibusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mexibus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mexibus";
+			};
+			name = Release;
+		};
+		DF79FBFB2CD9B0770052A52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.MexibusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mexibus;
+			};
+			name = Debug;
+		};
+		DF79FBFC2CD9B0770052A52E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.MexibusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mexibus;
 			};
 			name = Release;
 		};
@@ -627,6 +863,33 @@
 			buildConfigurations = (
 				3A60291B22548026006A6DBF /* Debug */,
 				3A60291C22548026006A6DBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF79FBFE2CD9B0770052A52E /* Build configuration list for PBXNativeTarget "Mexibus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF79FBF72CD9B0770052A52E /* Debug */,
+				DF79FBF82CD9B0770052A52E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF79FBFF2CD9B0770052A52E /* Build configuration list for PBXNativeTarget "MexibusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF79FBF92CD9B0770052A52E /* Debug */,
+				DF79FBFA2CD9B0770052A52E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF79FC002CD9B0770052A52E /* Build configuration list for PBXNativeTarget "MexibusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF79FBFB2CD9B0770052A52E /* Debug */,
+				DF79FBFC2CD9B0770052A52E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
