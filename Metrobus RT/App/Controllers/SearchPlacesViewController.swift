@@ -113,7 +113,25 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
             self.view.layoutIfNeeded()
         }
     }
+    private func addHideKeyboardButton() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let hideButton = UIBarButtonItem(title: "Colapsar teclado", style: .done, target: self, action: #selector(hideKeyboard))
+        
+        toolbar.items = [flexSpace, hideButton]
+        searchBar.inputAccessoryView = toolbar
+    }
     
+    @objc private func hideKeyboard() {
+        searchBar.resignFirstResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addHideKeyboardButton()
+    }
     @objc private func keyboardWillHide(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
               let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
@@ -138,7 +156,7 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
         searchTask = task
         lastSearchText = searchText
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: task)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: task)
     }
     
     private func searchPlacesUsingGMaps(query: String) {
