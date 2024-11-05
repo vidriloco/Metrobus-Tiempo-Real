@@ -11,9 +11,9 @@ import CoreLocation
 import WebKit
 import StoreKit
 import AppReview
+import GoogleMobileAds
 
 class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManagerDelegate {
-    var webView: WKWebView!
     
     // Add a button to center the user on the map
     let searchButton: UIButton = {
@@ -23,6 +23,26 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.opacity = 0
         return button
+    }()
+    
+    lazy var adView: GADBannerView = {
+        let bannerView = GADBannerView(adSize: GoogleMobileAds.GADAdSize())
+        bannerView.adUnitID = "ca-app-pub-9711213702831051/6903737194"
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        bannerView.isHidden = true
+        return bannerView
+    }()
+    
+    let webView: WKWebView = {
+        let webConfiguration = WKWebViewConfiguration()
+        
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.isHidden = true
+        
+        return webView
     }()
     
     var locationManager: CLLocationManager!
@@ -48,15 +68,32 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Initialize the web view
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.scrollView.isScrollEnabled = false
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
+
+        configureViews()
         webView.navigationDelegate = self
-        view.addSubview(webView)
+
+        // Load a URL
+        if let url = URL(string: "https://wikiando.mx/mobile") {
+            webView.load(URLRequest(url: url))
+        }
         
+        AppReview.requestIf(launches: 3, days: 3)
+        
+        adView.load(GADRequest())
+    }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingBackground.removeFromSuperview()
+        loadingIndicator.stopAnimating()
+        searchButton.layer.opacity = 1
+        webView.isHidden = false
+        adView.isHidden = false
+    }
+    
+    func configureViews() {
         view.addSubview(loadingBackground)
+        view.addSubview(webView)
+        view.addSubview(adView)
         
         // Set up auto layout constraints for the loading label
         NSLayoutConstraint.activate([
@@ -66,16 +103,15 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
             loadingBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Stop the loading indicator when the page finishes loading
-        webView.navigationDelegate = self
-        
-        // Set up auto layout constraints
-        webView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            webView.bottomAnchor.constraint(equalTo: adView.topAnchor),
+            adView.heightAnchor.constraint(equalToConstant: 100),
+            adView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            adView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            adView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
 
         view.addSubview(loadingIndicator)
@@ -93,19 +129,6 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
             searchButton.widthAnchor.constraint(equalToConstant: 50),
             searchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        // Load a URL
-        if let url = URL(string: "https://wikiando.mx/mobile") {
-            webView.load(URLRequest(url: url))
-        }
-        
-        AppReview.requestIf(launches: 3, days: 3)
-    }
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        loadingBackground.removeFromSuperview()
-        loadingIndicator.stopAnimating()
-        searchButton.layer.opacity = 1
     }
     
     func showRateUsPrompt() {
@@ -130,7 +153,14 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
         let viewModel = SearchPlacesViewController.ViewModel()
         viewModel.didSelectALocation = { [weak self] location in
             guard let self = self else { return }
-            let jsCode = "var newCenter = [\(location.longitude), \(location.latitude)]; map.flyTo({ center: newCenter, zoom: 15, duration: 1500 })"
+            let jsCode = """
+               collapseLayersMenu();
+               clearSelectionData();
+
+               var newCenter = [\(location.longitude), \(location.latitude)]; 
+               map.flyTo({ center: newCenter, zoom: 15, duration: 1500 });
+               drawPolygonForFeature({lat: newCenter[1], lng: newCenter[0]}, 20); 
+            """
             
             self.webView.evaluateJavaScript(jsCode) { (result, error) in
                 if let error = error {

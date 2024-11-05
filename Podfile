@@ -7,6 +7,7 @@ target 'Metrobus RT' do
 
   # Pods for Metrobus RT
   pod 'AppReview', :git => 'https://github.com/mezhevikin/AppReview.git'
+  pod 'Google-Mobile-Ads-SDK'
 end
 
 post_install do |installer|
