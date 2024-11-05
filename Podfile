@@ -1,13 +1,23 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
 
-target 'Metrobus RT' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+use_frameworks!
 
-  # Pods for Metrobus RT
-  pod 'AppReview', :git => 'https://github.com/mezhevikin/AppReview.git'
+def shared
   pod 'Google-Mobile-Ads-SDK'
+  pod 'AppReview', :git => 'https://github.com/mezhevikin/AppReview.git'
+end
+
+target 'Metrobus RT' do
+  shared
+end
+
+target 'Mexibus' do
+  shared
+end
+
+target 'TransportCore' do
+  shared
 end
 
 post_install do |installer|

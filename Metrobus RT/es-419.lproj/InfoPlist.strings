@@ -1,8 +1,0 @@
-/* 
-  InfoPlist.strings
-  Metrobus RT
-
-  Created by Alejandro Cruz on 09/08/2023.
-  Copyright © 2023 El Chahuistle. All rights reserved.
-*/
-"NSLocationWhenInUseUsageDescription" = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";

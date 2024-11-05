@@ -3,26 +3,57 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23EC94916CB5C8E17F81066F /* Pods_TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1223140C1BDB6051EC263AE6 /* Pods_TransportCore.framework */; };
 		3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60290B22548024006A6DBF /* AppDelegate.swift */; };
 		3A60291122548024006A6DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60290F22548024006A6DBF /* Main.storyboard */; };
-		3A6029212254861B006A6DBF /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6029202254861B006A6DBF /* RootCoordinator.swift */; };
-		3A60292922548740006A6DBF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60292822548740006A6DBF /* MapViewController.swift */; };
-		3A60295122548E98006A6DBF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A60295022548E98006A6DBF /* MapKit.framework */; };
-		3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */; };
-		DF1959FD2CD5C53900ED9829 /* SearchPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */; };
-		DF1959FF2CD5F89C00ED9829 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */; };
-		DF195A012CD5F8C000ED9829 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */; };
+		580E7DCA30892E0E291F47BE /* Pods_Mexibus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358ADB448CFE2EE4B7BE1DF0 /* Pods_Mexibus.framework */; };
+		DF73C63F2CD9C8FF00601433 /* TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; };
+		DF73C64A2CD9C8FF00601433 /* TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; };
+		DF73C64B2CD9C8FF00601433 /* TransportCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF73C65C2CD9C90300601433 /* TransportCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DF73C65A2CD9C90300601433 /* TransportCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF73C65F2CD9C90700601433 /* TransportCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF73C65D2CD9C90700601433 /* TransportCoreTests.swift */; };
+		DF73C66B2CD9CEE100601433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF73C6602CD9CEE100601433 /* AppDelegate.swift */; };
+		DF73C6732CD9D0B200601433 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */; };
+		DF73C6742CD9D0B200601433 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */; };
+		DF73C6752CD9D0B200601433 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60295222548F6A006A6DBF /* MapView.swift */; };
+		DF73C6762CD9D0B200601433 /* SearchPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */; };
+		DF73C6772CD9D0B200601433 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A60292822548740006A6DBF /* MapViewController.swift */; };
+		DF73C6782CD9D25000601433 /* TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; platformFilter = ios; };
+		DF73C6792CD9D25000601433 /* TransportCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF73C67C2CD9DBA400601433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF73C67B2CD9DBA400601433 /* LaunchScreen.storyboard */; };
+		DF73C67F2CD9DC4300601433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF73C67E2CD9DC4300601433 /* Main.storyboard */; };
+		DF73C6822CD9DEF700601433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF73C6812CD9DEF700601433 /* Assets.xcassets */; };
 		DFCBFDF62CC6243600A006D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFCBFDF52CC6243600A006D4 /* Assets.xcassets */; };
 		DFCBFDFA2CC62FC500A006D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */; };
-		DFD220D72A83FA9400B42D0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFD220D52A83FA9400B42D0F /* InfoPlist.strings */; };
 		E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DF73C6402CD9C8FF00601433 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A60290022548024006A6DBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF73C6362CD9C8FF00601433;
+			remoteInfo = TransportCore;
+		};
+		DF73C6422CD9C8FF00601433 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A60290022548024006A6DBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A60290722548024006A6DBF;
+			remoteInfo = "Metrobus RT";
+		};
+		DF73C6482CD9C8FF00601433 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A60290022548024006A6DBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF73C6362CD9C8FF00601433;
+			remoteInfo = TransportCore;
+		};
 		DF79FBE62CD9B0770052A52E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A60290022548024006A6DBF /* Project object */;
@@ -39,53 +70,91 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DF73C64C2CD9C8FF00601433 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF73C64B2CD9C8FF00601433 /* TransportCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C67A2CD9D25000601433 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF73C6792CD9D25000601433 /* TransportCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1223140C1BDB6051EC263AE6 /* Pods_TransportCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransportCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		358ADB448CFE2EE4B7BE1DF0 /* Pods_Mexibus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mexibus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A60290822548024006A6DBF /* Metrobus RT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metrobus RT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A60290B22548024006A6DBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A60291022548024006A6DBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A60291722548026006A6DBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A6029202254861B006A6DBF /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		3A60292822548740006A6DBF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3A60295022548E98006A6DBF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
+		3A60295222548F6A006A6DBF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		609741A09F0D67A18AC5E7D2 /* Pods-TransportCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportCore.debug.xcconfig"; path = "Target Support Files/Pods-TransportCore/Pods-TransportCore.debug.xcconfig"; sourceTree = "<group>"; };
 		7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.release.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.release.xcconfig"; sourceTree = "<group>"; };
 		7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metrobus RT.debug.xcconfig"; path = "Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT.debug.xcconfig"; sourceTree = "<group>"; };
+		9B5165645DDC267DB28D976D /* Pods-Mexibus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mexibus.release.xcconfig"; path = "Target Support Files/Pods-Mexibus/Pods-Mexibus.release.xcconfig"; sourceTree = "<group>"; };
 		DF1959FC2CD5C53900ED9829 /* SearchPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlacesViewController.swift; sourceTree = "<group>"; };
 		DF1959FE2CD5F89800ED9829 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		DF195A002CD5F8B700ED9829 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		DF73C6372CD9C8FF00601433 /* TransportCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TransportCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF73C63E2CD9C8FF00601433 /* TransportCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransportCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF73C65A2CD9C90300601433 /* TransportCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransportCore.h; sourceTree = "<group>"; };
+		DF73C65D2CD9C90700601433 /* TransportCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportCoreTests.swift; sourceTree = "<group>"; };
+		DF73C6602CD9CEE100601433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DF73C6672CD9CEE100601433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF73C6712CD9CEE600601433 /* Mexibus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mexibus-Bridging-Header.h"; sourceTree = "<group>"; };
+		DF73C67B2CD9DBA400601433 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DF73C67D2CD9DC4300601433 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DF73C6812CD9DEF700601433 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF79FBD02CD9B0750052A52E /* Mexibus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mexibus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MexibusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MexibusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFCBFDF52CC6243600A006D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DFD220D62A83FA9400B42D0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DFD220D82A83FA9C00B42D0F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metrobus_RT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5701A94BE73953A6F90BDA8 /* Pods-TransportCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransportCore.release.xcconfig"; path = "Target Support Files/Pods-TransportCore/Pods-TransportCore.release.xcconfig"; sourceTree = "<group>"; };
+		F4C50B01904169E90DA117C4 /* Pods-Mexibus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mexibus.debug.xcconfig"; path = "Target Support Files/Pods-Mexibus/Pods-Mexibus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		DF79FBFD2CD9B0770052A52E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = DF79FBCF2CD9B0750052A52E /* Mexibus */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		DF79FBD12CD9B0750052A52E /* Mexibus */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (DF79FBFD2CD9B0770052A52E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Mexibus; sourceTree = "<group>"; };
-		DF79FBE82CD9B0770052A52E /* MexibusTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MexibusTests; sourceTree = "<group>"; };
-		DF79FBF22CD9B0770052A52E /* MexibusUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = MexibusUITests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3A60290522548024006A6DBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A60295122548E98006A6DBF /* MapKit.framework in Frameworks */,
+				DF73C64A2CD9C8FF00601433 /* TransportCore.framework in Frameworks */,
 				E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C6342CD9C8FF00601433 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23EC94916CB5C8E17F81066F /* Pods_TransportCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C63B2CD9C8FF00601433 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF73C63F2CD9C8FF00601433 /* TransportCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +162,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580E7DCA30892E0E291F47BE /* Pods_Mexibus.framework in Frameworks */,
+				DF73C6782CD9D25000601433 /* TransportCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +191,8 @@
 				DF79FBD12CD9B0750052A52E /* Mexibus */,
 				DF79FBE82CD9B0770052A52E /* MexibusTests */,
 				DF79FBF22CD9B0770052A52E /* MexibusUITests */,
+				DF73C65B2CD9C90300601433 /* TransportCore */,
+				DF73C65E2CD9C90700601433 /* TransportCoreTests */,
 				3A60290922548024006A6DBF /* Products */,
 				3A60294F22548E98006A6DBF /* Frameworks */,
 				DC38D8B411B7AFE480A69FAA /* Pods */,
@@ -133,6 +206,8 @@
 				DF79FBD02CD9B0750052A52E /* Mexibus.app */,
 				DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */,
 				DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */,
+				DF73C6372CD9C8FF00601433 /* TransportCore.framework */,
+				DF73C63E2CD9C8FF00601433 /* TransportCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,8 +215,6 @@
 		3A60290A22548024006A6DBF /* Metrobus RT */ = {
 			isa = PBXGroup;
 			children = (
-				DFD220D52A83FA9400B42D0F /* InfoPlist.strings */,
-				3A60292722548681006A6DBF /* App */,
 				3A60290B22548024006A6DBF /* AppDelegate.swift */,
 				3A60290F22548024006A6DBF /* Main.storyboard */,
 				3A60291722548026006A6DBF /* Info.plist */,
@@ -163,20 +236,9 @@
 		3A60291F225485FC006A6DBF /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				3A6029202254861B006A6DBF /* RootCoordinator.swift */,
-				3A60295222548F6A006A6DBF /* MapViewCoordinator.swift */,
+				3A60295222548F6A006A6DBF /* MapView.swift */,
 			);
 			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		3A60292722548681006A6DBF /* App */ = {
-			isa = PBXGroup;
-			children = (
-				3A602930225488D1006A6DBF /* Views */,
-				3A60291F225485FC006A6DBF /* Coordinators */,
-				3A60291D225485DD006A6DBF /* Controllers */,
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 		3A602930225488D1006A6DBF /* Views */ = {
@@ -193,6 +255,8 @@
 			children = (
 				3A60295022548E98006A6DBF /* MapKit.framework */,
 				E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */,
+				358ADB448CFE2EE4B7BE1DF0 /* Pods_Mexibus.framework */,
+				1223140C1BDB6051EC263AE6 /* Pods_TransportCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,11 +266,72 @@
 			children = (
 				7B5B31A8E808EC85EFAF1B9C /* Pods-Metrobus RT.debug.xcconfig */,
 				7822A148028A4B662DA4FC4B /* Pods-Metrobus RT.release.xcconfig */,
+				F4C50B01904169E90DA117C4 /* Pods-Mexibus.debug.xcconfig */,
+				9B5165645DDC267DB28D976D /* Pods-Mexibus.release.xcconfig */,
+				609741A09F0D67A18AC5E7D2 /* Pods-TransportCore.debug.xcconfig */,
+				E5701A94BE73953A6F90BDA8 /* Pods-TransportCore.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DF73C65B2CD9C90300601433 /* TransportCore */ = {
+			isa = PBXGroup;
+			children = (
+				3A602930225488D1006A6DBF /* Views */,
+				3A60291F225485FC006A6DBF /* Coordinators */,
+				3A60291D225485DD006A6DBF /* Controllers */,
+				DF73C65A2CD9C90300601433 /* TransportCore.h */,
+			);
+			path = TransportCore;
+			sourceTree = "<group>";
+		};
+		DF73C65E2CD9C90700601433 /* TransportCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				DF73C65D2CD9C90700601433 /* TransportCoreTests.swift */,
+			);
+			path = TransportCoreTests;
+			sourceTree = "<group>";
+		};
+		DF79FBD12CD9B0750052A52E /* Mexibus */ = {
+			isa = PBXGroup;
+			children = (
+				DF73C67E2CD9DC4300601433 /* Main.storyboard */,
+				DF73C67B2CD9DBA400601433 /* LaunchScreen.storyboard */,
+				DF73C6602CD9CEE100601433 /* AppDelegate.swift */,
+				DF73C6672CD9CEE100601433 /* Info.plist */,
+				DF73C6712CD9CEE600601433 /* Mexibus-Bridging-Header.h */,
+				DF73C6812CD9DEF700601433 /* Assets.xcassets */,
+			);
+			path = Mexibus;
+			sourceTree = "<group>";
+		};
+		DF79FBE82CD9B0770052A52E /* MexibusTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MexibusTests;
+			sourceTree = "<group>";
+		};
+		DF79FBF22CD9B0770052A52E /* MexibusUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MexibusUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DF73C6322CD9C8FF00601433 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF73C65C2CD9C90300601433 /* TransportCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		3A60290722548024006A6DBF /* Metrobus RT */ = {
@@ -217,36 +342,76 @@
 				3A60290422548024006A6DBF /* Sources */,
 				3A60290522548024006A6DBF /* Frameworks */,
 				3A60290622548024006A6DBF /* Resources */,
-				45F59E14FACB16005392BEC2 /* [CP] Embed Pods Frameworks */,
-				D260F494269FDDFBEB464DCF /* [CP] Copy Pods Resources */,
+				DF73C64C2CD9C8FF00601433 /* Embed Frameworks */,
+				F6B3FA301EF52E17C423E29D /* [CP] Copy Pods Resources */,
+				43644D49C0EE5987C96A6E46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DF73C6492CD9C8FF00601433 /* PBXTargetDependency */,
 			);
 			name = "Metrobus RT";
 			productName = "Metrobus RT";
 			productReference = 3A60290822548024006A6DBF /* Metrobus RT.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DF79FBCF2CD9B0750052A52E /* Mexibus */ = {
+		DF73C6362CD9C8FF00601433 /* TransportCore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF79FBFE2CD9B0770052A52E /* Build configuration list for PBXNativeTarget "Mexibus" */;
+			buildConfigurationList = DF73C6522CD9C8FF00601433 /* Build configuration list for PBXNativeTarget "TransportCore" */;
 			buildPhases = (
-				DF79FBCC2CD9B0750052A52E /* Sources */,
-				DF79FBCD2CD9B0750052A52E /* Frameworks */,
-				DF79FBCE2CD9B0750052A52E /* Resources */,
+				51EF7C66D90712DEB8AE54E8 /* [CP] Check Pods Manifest.lock */,
+				DF73C6322CD9C8FF00601433 /* Headers */,
+				DF73C6332CD9C8FF00601433 /* Sources */,
+				DF73C6342CD9C8FF00601433 /* Frameworks */,
+				DF73C6352CD9C8FF00601433 /* Resources */,
+				2A46D6D5E52AAD471D1478E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				DF79FBD12CD9B0750052A52E /* Mexibus */,
+			name = TransportCore;
+			productName = TransportCore;
+			productReference = DF73C6372CD9C8FF00601433 /* TransportCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DF73C63D2CD9C8FF00601433 /* TransportCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF73C6532CD9C8FF00601433 /* Build configuration list for PBXNativeTarget "TransportCoreTests" */;
+			buildPhases = (
+				DF73C63A2CD9C8FF00601433 /* Sources */,
+				DF73C63B2CD9C8FF00601433 /* Frameworks */,
+				DF73C63C2CD9C8FF00601433 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF73C6412CD9C8FF00601433 /* PBXTargetDependency */,
+				DF73C6432CD9C8FF00601433 /* PBXTargetDependency */,
+			);
+			name = TransportCoreTests;
+			productName = TransportCoreTests;
+			productReference = DF73C63E2CD9C8FF00601433 /* TransportCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DF79FBCF2CD9B0750052A52E /* Mexibus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF79FBFE2CD9B0770052A52E /* Build configuration list for PBXNativeTarget "Mexibus" */;
+			buildPhases = (
+				0B0D53A4817A16FB83C8729D /* [CP] Check Pods Manifest.lock */,
+				DF79FBCC2CD9B0750052A52E /* Sources */,
+				DF79FBCD2CD9B0750052A52E /* Frameworks */,
+				DF79FBCE2CD9B0750052A52E /* Resources */,
+				5A97228B541308F1CE9337D6 /* [CP] Copy Pods Resources */,
+				DF73C67A2CD9D25000601433 /* Embed Frameworks */,
+				FC3F8D792473BE6C42D3B5E8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
 			);
 			name = Mexibus;
-			packageProductDependencies = (
-			);
 			productName = Mexibus;
 			productReference = DF79FBD02CD9B0750052A52E /* Mexibus.app */;
 			productType = "com.apple.product-type.application";
@@ -264,12 +429,7 @@
 			dependencies = (
 				DF79FBE72CD9B0770052A52E /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				DF79FBE82CD9B0770052A52E /* MexibusTests */,
-			);
 			name = MexibusTests;
-			packageProductDependencies = (
-			);
 			productName = MexibusTests;
 			productReference = DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -287,12 +447,7 @@
 			dependencies = (
 				DF79FBF12CD9B0770052A52E /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				DF79FBF22CD9B0770052A52E /* MexibusUITests */,
-			);
 			name = MexibusUITests;
-			packageProductDependencies = (
-			);
 			productName = MexibusUITests;
 			productReference = DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -314,8 +469,16 @@
 							};
 						};
 					};
+					DF73C6362CD9C8FF00601433 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					DF73C63D2CD9C8FF00601433 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 3A60290722548024006A6DBF;
+					};
 					DF79FBCF2CD9B0750052A52E = {
 						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
 					};
 					DF79FBE42CD9B0770052A52E = {
 						CreatedOnToolsVersion = 16.0;
@@ -345,6 +508,8 @@
 				DF79FBCF2CD9B0750052A52E /* Mexibus */,
 				DF79FBE42CD9B0770052A52E /* MexibusTests */,
 				DF79FBEE2CD9B0770052A52E /* MexibusUITests */,
+				DF73C6362CD9C8FF00601433 /* TransportCore */,
+				DF73C63D2CD9C8FF00601433 /* TransportCoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -355,9 +520,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A60291122548024006A6DBF /* Main.storyboard in Resources */,
-				DFD220D72A83FA9400B42D0F /* InfoPlist.strings in Resources */,
 				DFCBFDFA2CC62FC500A006D4 /* LaunchScreen.storyboard in Resources */,
 				DFCBFDF62CC6243600A006D4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C6352CD9C8FF00601433 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C63C2CD9C8FF00601433 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +543,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF73C67F2CD9DC4300601433 /* Main.storyboard in Resources */,
+				DF73C6822CD9DEF700601433 /* Assets.xcassets in Resources */,
+				DF73C67C2CD9DBA400601433 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +566,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		45F59E14FACB16005392BEC2 /* [CP] Embed Pods Frameworks */ = {
+		0B0D53A4817A16FB83C8729D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mexibus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A46D6D5E52AAD471D1478E1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TransportCore/Pods-TransportCore-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TransportCore/Pods-TransportCore-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransportCore/Pods-TransportCore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43644D49C0EE5987C96A6E46 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -400,6 +620,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51EF7C66D90712DEB8AE54E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TransportCore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A97228B541308F1CE9337D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mexibus/Pods-Mexibus-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mexibus/Pods-Mexibus-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mexibus/Pods-Mexibus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		84D5AB32630CD0A889ED8A2C /* [CP] Check Pods Manifest.lock */ = {
@@ -424,7 +683,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D260F494269FDDFBEB464DCF /* [CP] Copy Pods Resources */ = {
+		F6B3FA301EF52E17C423E29D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,6 +700,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Metrobus RT/Pods-Metrobus RT-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FC3F8D792473BE6C42D3B5E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mexibus/Pods-Mexibus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mexibus/Pods-Mexibus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mexibus/Pods-Mexibus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -448,13 +724,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A60295322548F6A006A6DBF /* MapViewCoordinator.swift in Sources */,
-				DF1959FD2CD5C53900ED9829 /* SearchPlacesViewController.swift in Sources */,
-				DF1959FF2CD5F89C00ED9829 /* EmptyStateView.swift in Sources */,
-				DF195A012CD5F8C000ED9829 /* LocationTableViewCell.swift in Sources */,
-				3A6029212254861B006A6DBF /* RootCoordinator.swift in Sources */,
-				3A60292922548740006A6DBF /* MapViewController.swift in Sources */,
 				3A60290C22548024006A6DBF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C6332CD9C8FF00601433 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF73C6732CD9D0B200601433 /* LocationTableViewCell.swift in Sources */,
+				DF73C6742CD9D0B200601433 /* EmptyStateView.swift in Sources */,
+				DF73C6752CD9D0B200601433 /* MapView.swift in Sources */,
+				DF73C6762CD9D0B200601433 /* SearchPlacesViewController.swift in Sources */,
+				DF73C6772CD9D0B200601433 /* MapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF73C63A2CD9C8FF00601433 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF73C65F2CD9C90700601433 /* TransportCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +752,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF73C66B2CD9CEE100601433 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +773,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DF73C6412CD9C8FF00601433 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF73C6362CD9C8FF00601433 /* TransportCore */;
+			targetProxy = DF73C6402CD9C8FF00601433 /* PBXContainerItemProxy */;
+		};
+		DF73C6432CD9C8FF00601433 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A60290722548024006A6DBF /* Metrobus RT */;
+			targetProxy = DF73C6422CD9C8FF00601433 /* PBXContainerItemProxy */;
+		};
+		DF73C6492CD9C8FF00601433 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF73C6362CD9C8FF00601433 /* TransportCore */;
+			targetProxy = DF73C6482CD9C8FF00601433 /* PBXContainerItemProxy */;
+		};
 		DF79FBE72CD9B0770052A52E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DF79FBCF2CD9B0750052A52E /* Mexibus */;
@@ -503,13 +809,12 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		DFD220D52A83FA9400B42D0F /* InfoPlist.strings */ = {
+		DF73C67E2CD9DC4300601433 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DFD220D62A83FA9400B42D0F /* en */,
-				DFD220D82A83FA9C00B42D0F /* es-419 */,
+				DF73C67D2CD9DC4300601433 /* Main.storyboard */,
 			);
-			name = InfoPlist.strings;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -657,7 +962,7 @@
 				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -682,75 +987,226 @@
 				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DF73C64D2CD9C8FF00601433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 609741A09F0D67A18AC5E7D2 /* Pods-TransportCore.debug.xcconfig */;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 El Chahuistle. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.TransportCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DF73C64E2CD9C8FF00601433 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5701A94BE73953A6F90BDA8 /* Pods-TransportCore.release.xcconfig */;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 El Chahuistle. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.TransportCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DF73C64F2CD9C8FF00601433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.TransportCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metrobus RT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Metrobus RT";
+			};
+			name = Debug;
+		};
+		DF73C6502CD9C8FF00601433 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5238S8DUH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.TransportCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Metrobus RT.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Metrobus RT";
 			};
 			name = Release;
 		};
 		DF79FBF72CD9B0770052A52E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4C50B01904169E90DA117C4 /* Pods-Mexibus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mexibus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mexibus EDOMEX ";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.Mexibus;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerDeApps.mexibus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Mexibus/Mexibus-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DF79FBF82CD9B0770052A52E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B5165645DDC267DB28D976D /* Pods-Mexibus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mexibus/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mexibus EDOMEX ";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tallerdeApps.Mexibus;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerDeApps.mexibus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Mexibus/Mexibus-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -762,7 +1218,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -786,7 +1242,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -808,7 +1264,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -831,7 +1287,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -863,6 +1319,24 @@
 			buildConfigurations = (
 				3A60291B22548026006A6DBF /* Debug */,
 				3A60291C22548026006A6DBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF73C6522CD9C8FF00601433 /* Build configuration list for PBXNativeTarget "TransportCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF73C64D2CD9C8FF00601433 /* Debug */,
+				DF73C64E2CD9C8FF00601433 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DF73C6532CD9C8FF00601433 /* Build configuration list for PBXNativeTarget "TransportCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF73C64F2CD9C8FF00601433 /* Debug */,
+				DF73C6502CD9C8FF00601433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

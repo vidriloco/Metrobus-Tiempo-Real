@@ -7,26 +7,22 @@
 //
 
 import UIKit
+import TransportCore
 import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var rootCoordinator: RootCoordinator?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rootCoordinator = RootCoordinator(window: window)
+        self.window?.rootViewController = MapView.build(with: MetrobusFlavor())
+        self.window?.makeKeyAndVisible()
         
-        self.window = window
-        self.rootCoordinator = rootCoordinator
-        
-        rootCoordinator.start()
         return true
     }
 
