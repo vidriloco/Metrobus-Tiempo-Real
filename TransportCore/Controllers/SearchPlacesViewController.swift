@@ -225,6 +225,7 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LocationTableViewCell.identifier, for: indexPath) as! LocationTableViewCell
+        guard indexPath.row < searchResults.count else { return UITableViewCell() }
         let location = searchResults[indexPath.row]
         cell.configure(with: location)
         return cell

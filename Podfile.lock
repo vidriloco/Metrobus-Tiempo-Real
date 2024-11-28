@@ -1,15 +1,18 @@
 PODS:
   - AppReview (0.0.2)
+  - FBAudienceNetwork (6.16.0)
   - Google-Mobile-Ads-SDK (11.11.0):
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleUserMessagingPlatform (2.7.0)
 
 DEPENDENCIES:
   - AppReview (from `https://github.com/mezhevikin/AppReview.git`)
+  - FBAudienceNetwork
   - Google-Mobile-Ads-SDK
 
 SPEC REPOS:
   trunk:
+    - FBAudienceNetwork
     - Google-Mobile-Ads-SDK
     - GoogleUserMessagingPlatform
 
@@ -24,9 +27,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AppReview: 7dfd2ba3456a51f11a07dc4f26f11fc1deb9161f
+  FBAudienceNetwork: d1670939884e3a2e0ad98dca98d7e0c841417228
   Google-Mobile-Ads-SDK: 6d2fc31d83b7b13a7dee3d622f1538fa3324958a
   GoogleUserMessagingPlatform: a8b56893477f67212fbc8411c139e61d463349f5
 
-PODFILE CHECKSUM: bfaa3147e2385ab0556f5241e3b0b8badde2dfd4
+PODFILE CHECKSUM: 541cae2d0bda935b924b4de578ece9516ea77817
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

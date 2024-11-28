@@ -12,8 +12,8 @@
 		3A60291122548024006A6DBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A60290F22548024006A6DBF /* Main.storyboard */; };
 		580E7DCA30892E0E291F47BE /* Pods_Mexibus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358ADB448CFE2EE4B7BE1DF0 /* Pods_Mexibus.framework */; };
 		DF73C63F2CD9C8FF00601433 /* TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; };
-		DF73C64A2CD9C8FF00601433 /* TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; };
-		DF73C64B2CD9C8FF00601433 /* TransportCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF73C64A2CD9C8FF00601433 /* TransportCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; platformFilter = ios; };
+		DF73C64B2CD9C8FF00601433 /* TransportCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DF73C6372CD9C8FF00601433 /* TransportCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF73C65C2CD9C90300601433 /* TransportCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DF73C65A2CD9C90300601433 /* TransportCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF73C65F2CD9C90700601433 /* TransportCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF73C65D2CD9C90700601433 /* TransportCoreTests.swift */; };
 		DF73C66B2CD9CEE100601433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF73C6602CD9CEE100601433 /* AppDelegate.swift */; };
@@ -27,6 +27,7 @@
 		DF73C67C2CD9DBA400601433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF73C67B2CD9DBA400601433 /* LaunchScreen.storyboard */; };
 		DF73C67F2CD9DC4300601433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF73C67E2CD9DC4300601433 /* Main.storyboard */; };
 		DF73C6822CD9DEF700601433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF73C6812CD9DEF700601433 /* Assets.xcassets */; };
+		DF94823F2CEA688E00DA6841 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = DF94823D2CEA676C00DA6841 /* error.html */; };
 		DFCBFDF62CC6243600A006D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFCBFDF52CC6243600A006D4 /* Assets.xcassets */; };
 		DFCBFDFA2CC62FC500A006D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */; };
 		E586826F0E684932DB0EEDF6 /* Pods_Metrobus_RT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */; };
@@ -125,6 +126,7 @@
 		DF79FBD02CD9B0750052A52E /* Mexibus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mexibus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF79FBE52CD9B0770052A52E /* MexibusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MexibusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF79FBEF2CD9B0770052A52E /* MexibusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MexibusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF94823D2CEA676C00DA6841 /* error.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = error.html; sourceTree = "<group>"; };
 		DFCBFDF52CC6243600A006D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3F3CD0AB91F34856ED2B060 /* Pods_Metrobus_RT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metrobus_RT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +219,7 @@
 			children = (
 				3A60290B22548024006A6DBF /* AppDelegate.swift */,
 				3A60290F22548024006A6DBF /* Main.storyboard */,
+				DF94823D2CEA676C00DA6841 /* error.html */,
 				3A60291722548026006A6DBF /* Info.plist */,
 				DFCBFDF52CC6243600A006D4 /* Assets.xcassets */,
 				DFCBFDF92CC62FC500A006D4 /* LaunchScreen.storyboard */,
@@ -492,7 +495,7 @@
 			};
 			buildConfigurationList = 3A60290322548024006A6DBF /* Build configuration list for PBXProject "Metrobus RT" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = "es-419";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -519,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF94823F2CEA688E00DA6841 /* error.html in Resources */,
 				3A60291122548024006A6DBF /* Main.storyboard in Resources */,
 				DFCBFDFA2CC62FC500A006D4 /* LaunchScreen.storyboard in Resources */,
 				DFCBFDF62CC6243600A006D4 /* Assets.xcassets in Resources */,
@@ -785,6 +789,7 @@
 		};
 		DF73C6492CD9C8FF00601433 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = DF73C6362CD9C8FF00601433 /* TransportCore */;
 			targetProxy = DF73C6482CD9C8FF00601433 /* PBXContainerItemProxy */;
 		};
@@ -949,7 +954,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
 				INFOPLIST_FILE = "Metrobus RT/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Metrobus CDMX";
@@ -959,9 +964,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -974,7 +981,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5238S8DUH7;
 				INFOPLIST_FILE = "Metrobus RT/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Metrobus CDMX";
@@ -984,9 +991,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "Chahuistle.Metrobus-RT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1136,16 +1145,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mexibus/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mexibus EDOMEX ";
+				INFOPLIST_KEY_CFBundleDisplayName = "Metrobus CDMX ";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1153,7 +1162,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tallerDeApps.mexibus;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerDeApps.Mexibus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1182,16 +1191,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mexibus/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mexibus EDOMEX ";
+				INFOPLIST_KEY_CFBundleDisplayName = "Metrobus CDMX ";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos acceder a tu ubicación para mostrarte con precisión tu localización en el mapa.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1199,7 +1208,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tallerDeApps.mexibus;
+				PRODUCT_BUNDLE_IDENTIFIER = tallerDeApps.Mexibus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

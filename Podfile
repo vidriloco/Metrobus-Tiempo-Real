@@ -6,6 +6,7 @@ use_frameworks!
 def shared
   pod 'Google-Mobile-Ads-SDK'
   pod 'AppReview', :git => 'https://github.com/mezhevikin/AppReview.git'
+  pod 'FBAudienceNetwork'
 end
 
 target 'Metrobus RT' do
