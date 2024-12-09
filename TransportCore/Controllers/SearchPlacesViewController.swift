@@ -150,13 +150,21 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchTask?.cancel()
         
-        let task = DispatchWorkItem { [weak self] in
-            self?.searchPlacesUsingGMaps(query: searchText)
-        }
-        searchTask = task
         lastSearchText = searchText
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: task)
+        guard !searchText.isEmpty else {
+            searchResults = []
+            tableView.reloadData()
+            updateEmptyStateView()
+            return
+        }
+        
+        let task = DispatchWorkItem { [weak self] in
+            self?.searchPlacesUsingNominatim(query: searchText)
+        }
+        searchTask = task
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: task)
     }
     
     private func searchPlacesUsingGMaps(query: String) {
@@ -177,6 +185,7 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                    let results = json["results"] as? [[String: Any]] {
+                    print(json)
                     self?.searchResults = results.compactMap { result in
                         if let geometry = result["geometry"] as? [String: Any],
                            let location = geometry["location"] as? [String: Any],
@@ -187,6 +196,54 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
                                 let location = CLLocation(latitude: lat, longitude: lng)
                                 let distance = self?.currentLocation?.distance(from: location) ?? 0.0
                                 return Location(latitude: lat, longitude: lng, name: name, address: address, distance: distance)
+                            }
+                        return nil
+                    }
+                    self?.sortSearchResultsByDistance()
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                        self?.updateEmptyStateView()
+                    }
+                }
+            } catch {
+                print("Failed to parse JSON: \(error)")
+            }
+        }
+        
+        task.resume()
+    }
+
+    private func searchPlacesUsingNominatim(query: String) {
+        guard !query.isEmpty else {
+            searchResults = []
+            tableView.reloadData()
+            updateEmptyStateView()
+            return
+        }
+        
+        let mexicoCityLat = 19.432608
+        let mexicoCityLon = -99.133209
+        let radius = 100000 // 100 km in meters
+        
+        let urlString = "https://nominatim.openstreetmap.org/search?q=\(query)&format=json&addressdetails=1&viewbox=\(mexicoCityLon - 1.0),\(mexicoCityLat + 1.0),\(mexicoCityLon + 1.0),\(mexicoCityLat - 1.0)&bounded=1"
+        guard let url = URL(string: urlString) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                if let results = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                    self?.searchResults = results.compactMap { result in
+                        if let latString = result["lat"] as? String,
+                           let lonString = result["lon"] as? String,
+                           let lat = Double(latString),
+                           let lon = Double(lonString),
+                           let displayName = result["display_name"] as? String {
+                                let location = CLLocation(latitude: lat, longitude: lon)
+                                let distance = self?.currentLocation?.distance(from: location) ?? 0.0
+                                if distance <= Double(radius) {
+                                    return Location(latitude: lat, longitude: lon, name: displayName, address: displayName, distance: distance)
+                                }
                             }
                         return nil
                     }
