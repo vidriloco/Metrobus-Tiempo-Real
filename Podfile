@@ -4,20 +4,11 @@ platform :ios, '12.0'
 use_frameworks!
 
 def shared
-  pod 'Google-Mobile-Ads-SDK'
   pod 'AppReview', :git => 'https://github.com/mezhevikin/AppReview.git'
   pod 'FBAudienceNetwork'
 end
 
 target 'Metrobus RT' do
-  shared
-end
-
-target 'Mexibus' do
-  shared
-end
-
-target 'TransportCore' do
   shared
 end
 

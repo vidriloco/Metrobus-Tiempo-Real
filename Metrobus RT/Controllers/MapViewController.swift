@@ -16,7 +16,7 @@ import FBAudienceNetwork
 class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManagerDelegate {
 
     // Add a button to center the user on the map
-    let searchButton: UIButton = {
+    lazy var searchButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "search-icon"), for: .normal)
         button.addTarget(self, action: #selector(displaySearchList), for: .touchUpInside)
@@ -168,8 +168,6 @@ class MapViewController: UIViewController, WKNavigationDelegate, CLLocationManag
                 self.present(alert, animated: true, completion: nil)
             }
         }
-
-        
     }
     
     func configureViews() {

@@ -132,6 +132,7 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
         super.viewDidAppear(animated)
         addHideKeyboardButton()
     }
+    
     @objc private func keyboardWillHide(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
               let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
@@ -160,7 +161,7 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
         }
         
         let task = DispatchWorkItem { [weak self] in
-            self?.searchPlacesUsingNominatim(query: searchText)
+            self?.searchPlacesUsingMapbox(query: searchText)
         }
         searchTask = task
         
@@ -245,6 +246,52 @@ class SearchPlacesViewController: UIViewController, UISearchBarDelegate, UITable
                                     return Location(latitude: lat, longitude: lon, name: displayName, address: displayName, distance: distance)
                                 }
                             }
+                        return nil
+                    }
+                    self?.sortSearchResultsByDistance()
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                        self?.updateEmptyStateView()
+                    }
+                }
+            } catch {
+                print("Failed to parse JSON: \(error)")
+            }
+        }
+        
+        task.resume()
+    }
+    
+    private func searchPlacesUsingMapbox(query: String) {
+        guard !query.isEmpty else {
+            searchResults = []
+            tableView.reloadData()
+            updateEmptyStateView()
+            return
+        }
+        
+        let accessToken = "pk.eyJ1Ijoidmlkcmlsb2NvIiwiYSI6Ik1QRzIwZmcifQ.BzdjvFURAZ8uJ6kNovrrDA"
+        let urlString = "https://api.mapbox.com/geocoding/v5/mapbox.places/\(query).json?access_token=\(accessToken)&proximity=\(currentLocation?.coordinate.longitude ?? 0),\(currentLocation?.coordinate.latitude ?? 0)&limit=10"
+        guard let url = URL(string: urlString) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, error == nil else { return }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let features = json["features"] as? [[String: Any]] {
+                    self?.searchResults = features.compactMap { feature in
+                        if let geometry = feature["geometry"] as? [String: Any],
+                           let coordinates = geometry["coordinates"] as? [Double],
+                           let name = feature["text"] as? String,
+                           let address = feature["place_name"] as? String,
+                           coordinates.count == 2 {
+                            let lat = coordinates[1]
+                            let lon = coordinates[0]
+                            let location = CLLocation(latitude: lat, longitude: lon)
+                            let distance = self?.currentLocation?.distance(from: location) ?? 0.0
+                            return Location(latitude: lat, longitude: lon, name: name, address: address, distance: distance)
+                        }
                         return nil
                     }
                     self?.sortSearchResultsByDistance()
